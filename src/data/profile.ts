@@ -7,9 +7,9 @@ export const profile = {
   secondaryRole: "CTO, MedOS Limited",
   location: "Abu Dhabi, UAE",
   summary:
-    "Incoming PhD student and AI research engineer working on trustworthy medical vision-language models, uncertainty and risk control, and efficient deep learning for deployment on resource-constrained hardware.",
+    "PhD student and AI research engineer working on trustworthy medical vision-language models, uncertainty and risk control, and efficient deep learning for deployment on resource-constrained hardware.",
   longBio: [
-    "I am an incoming PhD student and AI Research Engineer based in the UAE, with three years of experience developing and deploying computer-vision, multimodal, and real-time inference systems. I have built vision pipelines operating at 76 FPS, sub-second streaming ASR systems, and scalable model-serving infrastructure using PyTorch, C++, Docker, and cloud platforms.",
+    "I am a PhD student and AI Research Engineer based in the UAE, with three years of experience developing and deploying computer-vision, multimodal, and real-time inference systems. I have built vision pipelines operating at 76 FPS, sub-second streaming ASR systems, and scalable model-serving infrastructure using PyTorch, C++, Docker, and cloud platforms.",
     "My research centres on making foundation models trustworthy where the cost of being wrong is highest \u2014 clinical medicine. That means faithful multimodal reasoning and hallucination mitigation, conformal prediction and risk control, test-time and out-of-distribution adaptation, and the mechanistic interpretability needed to understand why a model behaves as it does.",
     "Alongside research, I care about the engineering that makes it real: quantization, distillation, mixed-precision inference, and hardware-aware optimization that let these systems run inside actual clinical environments.",
     "I am open for Visiting Fellowships and Internships. Access my CV. You can reach me at abhijit.das@mbzuai.ac.ae.",
