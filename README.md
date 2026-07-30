@@ -2,6 +2,8 @@
 
 Personal academic / research homepage for [Abhijit Das](https://github.com/aj-das-research).
 
+**Live site:** [https://aj-das-research.github.io/homepage/](https://aj-das-research.github.io/homepage/)
+
 ## Stack
 
 - TanStack Start (SPA mode)
@@ -36,7 +38,7 @@ This project is set up for static hosting via GitHub Pages (TanStack Start SPA m
 3. The deploy workflow sets `VITE_BASE_PATH` from the repository name, builds, and publishes `.output/public` (copying `_shell.html` to `index.html` / `404.html`).
 4. For a user site (`https://<user>.github.io/`), the base path stays `/`.
 
-After the first successful deploy, the site will be available at your Pages URL.
+Published site: [https://aj-das-research.github.io/homepage/](https://aj-das-research.github.io/homepage/)
 
 ## Content
 
