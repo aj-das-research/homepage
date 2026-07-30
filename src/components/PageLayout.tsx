@@ -6,7 +6,7 @@ export function PageLayout({
   children,
 }: {
   title: string;
-  intro?: string;
+  intro?: ReactNode;
   children: ReactNode;
 }) {
   return (

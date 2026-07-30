@@ -33,17 +33,16 @@ function Publications() {
   return (
     <PageLayout
       title="Publications"
-      intro="Selected papers, each with a short summary of the idea behind it. Full list also available on Google Scholar."
+      intro={
+        <>
+          For the published papers and preprints please visit my{" "}
+          <a href={profile.scholar} target="_blank" rel="noreferrer">
+            Google Scholar
+          </a>
+          .
+        </>
+      }
     >
-      <a
-        className="underline underline-offset-4 hover:text-muted-foreground"
-        href={profile.scholar}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Google Scholar profile →
-      </a>
-
       {years.map((year) => {
         const items = publications.filter((p) => p.year === year);
         if (items.length === 0) return null;

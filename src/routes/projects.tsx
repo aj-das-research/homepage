@@ -29,7 +29,7 @@ function Projects() {
   return (
     <PageLayout
       title="Ongoing projects"
-      intro="The research threads I am actively working on, and the papers and systems that sit under each."
+      intro="The research areas and systems I am actively working on."
     >
       <ul className="space-y-12">
         {projects.map((project) => (

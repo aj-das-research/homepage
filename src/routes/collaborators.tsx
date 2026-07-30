@@ -75,7 +75,7 @@ function Collaborators() {
   return (
     <PageLayout
       title="Collaborators"
-      intro="My supervisor, followed by selected research collaborators."
+      intro="My supervisor, followed by amazing research collaborators."
     >
       <section>
         <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
