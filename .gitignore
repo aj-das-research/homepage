@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+.output/
+.vinxi/
+.nitro/
+.tanstack/
+.wrangler/
+
+# Env / local
+.env
+.env.*
+!.env.example
+
+# Logs / caches
+*.log
+npm-debug.log*
+.DS_Store
+.eslintcache
+.vite/
+*.local
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
