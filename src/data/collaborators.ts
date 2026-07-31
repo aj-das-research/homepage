@@ -13,6 +13,7 @@ import ebadPhoto from "@/assets/media/student_collaborators/ebad.png";
 import adinathPhoto from "@/assets/media/student_collaborators/adinath.png";
 import amnaPhoto from "@/assets/media/student_collaborators/amna.png";
 import yifanPhoto from "@/assets/media/student_collaborators/yifan.png";
+import xiangPhoto from "@/assets/media/collaborators/xiang.png";
 import utathyaPhoto from "@/assets/media/student_collaborators/utathya.png";
 import shreyaPhoto from "@/assets/media/student_collaborators/shreya.png";
 import vandanPhoto from "@/assets/media/student_collaborators/vandan.png";
@@ -215,6 +216,11 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Vandan Gorade",
     image: vandanPhoto,
     href: "https://www.linkedin.com/in/vandan-g-b3851b168/",
+  },
+  {
+    name: "Xiang Meng",
+    image: xiangPhoto,
+    href: "https://www.linkedin.com/in/xiang-meng-stat/",
   },
   {
     name: "Yifan Lu",
