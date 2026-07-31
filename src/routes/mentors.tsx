@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GraduationCap } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PersonPhoto } from "@/components/MediaThumb";
 import { PersonLinks } from "@/components/PersonLinks";
@@ -79,12 +80,6 @@ function PersonGrid({
   );
 }
 
-function splitName(name: string) {
-  const parts = name.trim().split(/\s+/);
-  if (parts.length === 1) return { first: parts[0], last: "" };
-  return { first: parts[0], last: parts.slice(1).join(" ") };
-}
-
 /** Fill rows to max (e.g. 15 → 6/6/3), each row centered. */
 function chunkTaperedRows<T>(items: T[], maxPerRow = 6): T[][] {
   const rows: T[][] = [];
@@ -95,30 +90,41 @@ function chunkTaperedRows<T>(items: T[], maxPerRow = 6): T[][] {
 }
 
 function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
-  const { first, last } = splitName(person.name);
-  const nameClass =
-    "mt-1.5 flex flex-col items-center text-center font-serif text-xl leading-snug";
-  const nameBody = (
-    <>
-      <span>{first}</span>
-      {last ? <span>{last}</span> : null}
-    </>
-  );
+  const labelClass =
+    "mt-1.5 text-center font-serif text-[15px] leading-snug";
   return (
-    <li className="flex w-28 flex-col items-center sm:w-32">
-      <PersonPhoto src={person.image} name={person.name} size="md" rounded />
+    <li className="flex w-28 flex-col items-center sm:w-36">
+      <div className="relative">
+        <PersonPhoto src={person.image} name={person.name} size="md" rounded />
+        {person.scholar ? (
+          <a
+            href={person.scholar}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${person.name} on Google Scholar`}
+            className="absolute -right-1 -top-1 z-10 inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-card text-primary shadow-sm transition-colors hover:border-accent hover:text-accent"
+          >
+            <GraduationCap size={14} strokeWidth={2} />
+          </a>
+        ) : null}
+      </div>
       {person.href ? (
         <a
           href={person.href}
           target="_blank"
           rel="noreferrer"
-          className={nameClass}
+          className={labelClass}
         >
-          {nameBody}
+          {person.name}
         </a>
       ) : (
-        <span className={`${nameClass} text-foreground`}>{nameBody}</span>
+        <span className={`${labelClass} text-foreground`}>{person.name}</span>
       )}
+      {person.institute ? (
+        <p className="mt-0.5 text-center font-serif text-[15px] leading-snug text-muted-foreground">
+          {person.institute}
+        </p>
+      ) : null}
     </li>
   );
 }

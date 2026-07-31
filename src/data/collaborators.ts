@@ -141,6 +141,10 @@ export type PeerCollaborator = {
   name: string;
   image?: string;
   href?: string;
+  /** Short institute label (e.g. MBZUAI, Harvard). */
+  institute?: string;
+  /** Google Scholar profile URL. */
+  scholar?: string;
 };
 
 /**
@@ -151,81 +155,127 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Adinath Dukre",
     image: adinathPhoto,
     href: "https://www.linkedin.com/in/adinath-dukre-6a3261243/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Adinath+Dukre&hl=en",
   },
   {
     name: "Amna Bano",
     image: amnaPhoto,
     href: "https://www.linkedin.com/in/amna-bano-0379523a2/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Amna+Bano&hl=en",
   },
   {
     name: "Cristina Correa",
     image: cristinaPhoto,
     href: "https://www.linkedin.com/in/cristina-correa-segade/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Cristina+Correa+Segade&hl=en",
   },
   {
     name: "Debayan Ganguly",
     image: debayanPhoto,
     href: "https://www.linkedin.com/in/debayan-ganguly-2442931b/",
+    institute: "GCELT",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Debayan+Ganguly&hl=en",
   },
   {
     name: "Debesh Jha",
     image: debeshPhoto,
     href: "https://www.linkedin.com/in/debesh-jha-ph-d-071462aa/",
+    institute: "USD",
+    scholar: "https://scholar.google.com/citations?user=mMTyE68AAAAJ&hl=en",
   },
   {
     name: "Ebad Shabbir",
     image: ebadPhoto,
     href: "https://www.linkedin.com/in/ebad-shabbir-b9b34a282/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Ebad+Shabbir&hl=en",
   },
   {
     name: "Joy Dhar",
     image: joyPhoto,
     href: "https://www.linkedin.com/in/joy-dhar-42930a248/",
+    institute: "IIT Ropar",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Joy+Dhar+IIT+Ropar&hl=en",
   },
   {
     name: "Rafiq Ali",
     image: rafiqPhoto,
     href: "https://www.linkedin.com/in/rafiq-ali-a2236a299/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Rafiq+Ali+MBZUAI&hl=en",
   },
   {
     name: "Rishabh Lalla",
     image: rishabhPhoto,
     href: "https://www.linkedin.com/in/rishabh-lalla/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Rishabh+Lalla&hl=en",
   },
   {
     name: "Sayantan Dutta",
     image: sayantanPhoto,
     href: "https://www.linkedin.com/in/sayantan-dutta/",
+    institute: "GE Healthcare",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Sayantan+Dutta+GE+HealthCare&hl=en",
   },
   {
     name: "Shadab Khan",
     image: shadabPhoto,
     href: "https://www.linkedin.com/in/skhanshadab/",
+    institute: "ADIA Lab",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Shadab+Khan+ADIA&hl=en",
   },
   {
     name: "Shreya Kumari",
     image: shreyaPhoto,
     href: "https://www.linkedin.com/in/shreyakumari0301/",
+    institute: "IIT Madras",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Shreya+Kumari+IIT+Madras&hl=en",
   },
   {
     name: "Utathya Aich",
     image: utathyaPhoto,
     href: "https://www.linkedin.com/in/utathyaaich/",
+    institute: "Jadavpur",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Utathya+Aich&hl=en",
   },
   {
     name: "Vandan Gorade",
     image: vandanPhoto,
     href: "https://www.linkedin.com/in/vandan-g-b3851b168/",
+    institute: "Northwestern",
+    scholar: "https://scholar.google.com/citations?user=OsJYrdEAAAAJ&hl=en",
   },
   {
     name: "Xiang Meng",
     image: xiangPhoto,
     href: "https://www.linkedin.com/in/xiang-meng-stat/",
+    institute: "Harvard",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Xiang+Meng+Harvard+Statistics&hl=en",
   },
   {
     name: "Yifan Lu",
     image: yifanPhoto,
     href: "https://www.linkedin.com/in/yifan-lu-bb5347335/",
+    institute: "MBZUAI",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Yifan+Lu+MBZUAI&hl=en",
   },
 ];
 
