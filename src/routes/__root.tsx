@@ -13,6 +13,10 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
+const assetBase = import.meta.env.BASE_URL || "/";
+const assetUrl = (path: string) =>
+  `${assetBase}${path.replace(/^\//, "")}`;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -91,9 +95,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "icon", href: assetUrl("favicon.svg"), type: "image/svg+xml" },
+      { rel: "icon", href: assetUrl("favicon.ico"), sizes: "any" },
+      { rel: "apple-touch-icon", href: assetUrl("apple-touch-icon.png") },
     ],
   }),
   shellComponent: RootShell,
