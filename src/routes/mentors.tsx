@@ -85,21 +85,11 @@ function splitName(name: string) {
   return { first: parts[0], last: parts.slice(1).join(" ") };
 }
 
-/** Fill top row to max, then taper by 2 (e.g. 15 → 7/5/3). */
-function chunkTaperedRows<T>(items: T[], maxPerRow = 7): T[][] {
+/** Fill rows to max (e.g. 15 → 6/6/3), each row centered. */
+function chunkTaperedRows<T>(items: T[], maxPerRow = 6): T[][] {
   const rows: T[][] = [];
-  let rest = items;
-  let cap = maxPerRow;
-  while (rest.length > 0) {
-    if (rest.length <= cap) {
-      rows.push(rest);
-      break;
-    }
-    let take = cap;
-    if (rest.length - take === 1) take -= 1;
-    rows.push(rest.slice(0, take));
-    rest = rest.slice(take);
-    cap = Math.max(1, take - 2);
+  for (let i = 0; i < items.length; i += maxPerRow) {
+    rows.push(items.slice(i, i + maxPerRow));
   }
   return rows;
 }
@@ -134,7 +124,7 @@ function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
 }
 
 function PeerCollaboratorGrid({ people }: { people: PeerCollaborator[] }) {
-  const rows = chunkTaperedRows(people, 7);
+  const rows = chunkTaperedRows(people, 6);
   return (
     <div className="flex flex-col items-center gap-y-6">
       {rows.map((row, rowIndex) => (
