@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout } from "@/components/PageLayout";
 import { MediaThumb } from "@/components/MediaThumb";
+import { ImageLightbox } from "@/components/ImageLightbox";
 import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/projects")({
@@ -25,7 +27,16 @@ export const Route = createFileRoute("/projects")({
   component: Projects,
 });
 
+const projectImages = projects.flatMap((project) =>
+  project.image
+    ? [{ src: project.image, alt: project.title, caption: project.title }]
+    : [],
+);
+
 function Projects() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const indexBySrc = new Map(projectImages.map((img, i) => [img.src, i]));
+
   return (
     <PageLayout
       title="Ongoing projects"
@@ -34,17 +45,34 @@ function Projects() {
       <ul className="space-y-8">
         {projects.map((project) => (
           <li key={project.title} className="list-row flex flex-col gap-3 sm:flex-row sm:gap-5">
-            <MediaThumb src={project.image} alt={project.title} />
+            <MediaThumb
+              src={project.image}
+              alt={project.title}
+              onOpen={
+                project.image && indexBySrc.has(project.image)
+                  ? () => setActiveIndex(indexBySrc.get(project.image!)!)
+                  : undefined
+              }
+            />
             <div>
               <h2 className="font-serif text-xl leading-snug text-foreground">{project.title}</h2>
               <p className="text-meta mt-0.5 uppercase tracking-[0.1em] text-accent">
                 {project.works}
               </p>
-              <p className="prose-justify mt-2 text-[16px] leading-snug text-muted-foreground">{project.description}</p>
+              <p className="prose-justify mt-2 text-[16px] leading-snug text-muted-foreground">
+                {project.description}
+              </p>
             </div>
           </li>
         ))}
       </ul>
+
+      <ImageLightbox
+        images={projectImages}
+        activeIndex={activeIndex}
+        onClose={() => setActiveIndex(null)}
+        onChange={setActiveIndex}
+      />
     </PageLayout>
   );
 }

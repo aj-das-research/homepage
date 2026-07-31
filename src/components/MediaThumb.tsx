@@ -4,6 +4,7 @@ export function MediaThumb({
   caption,
   captionHref,
   className = "",
+  onOpen,
 }: {
   src?: string;
   alt: string;
@@ -12,18 +13,40 @@ export function MediaThumb({
   /** When set, caption links to the same URL as the paper title. */
   captionHref?: string;
   className?: string;
+  /** Opens the shared lightbox when the image is clicked. */
+  onOpen?: () => void;
 }) {
   if (!src) return null;
+
+  const figure = (
+    <figure
+      className={`media-hover aspect-video overflow-hidden border border-border bg-secondary ${
+        onOpen ? "cursor-zoom-in" : ""
+      }`}
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover"
+      />
+    </figure>
+  );
+
   return (
     <div className={`w-48 shrink-0 self-start sm:w-64 md:w-72 ${className}`}>
-      <figure className="media-hover aspect-video overflow-hidden border border-border bg-secondary">
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
-      </figure>
+      {onOpen ? (
+        <button
+          type="button"
+          onClick={onOpen}
+          aria-label={`View ${alt}`}
+          className="block w-full border-0 bg-transparent p-0 text-left"
+        >
+          {figure}
+        </button>
+      ) : (
+        figure
+      )}
       {caption ? (
         <p className="text-meta mt-1.5 italic leading-snug text-accent">
           {captionHref ? (

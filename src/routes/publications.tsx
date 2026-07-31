@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout } from "@/components/PageLayout";
 import { AuthorList } from "@/components/AuthorList";
 import { MediaThumb } from "@/components/MediaThumb";
+import { ImageLightbox } from "@/components/ImageLightbox";
 import { publications, patents } from "@/data/publications";
 import { profile } from "@/data/profile";
 
@@ -29,7 +31,16 @@ export const Route = createFileRoute("/publications")({
 
 const years = ["2026", "2025", "2024"];
 
+const publicationImages = publications.flatMap((pub) =>
+  pub.image
+    ? [{ src: pub.image, alt: pub.title, caption: pub.title }]
+    : [],
+);
+
 function Publications() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const indexBySrc = new Map(publicationImages.map((img, i) => [img.src, i]));
+
   return (
     <PageLayout
       title="Publications"
@@ -59,6 +70,11 @@ function Publications() {
                     alt={pub.title}
                     caption={pub.venue}
                     captionHref={pub.href}
+                    onOpen={
+                      pub.image && indexBySrc.has(pub.image)
+                        ? () => setActiveIndex(indexBySrc.get(pub.image!)!)
+                        : undefined
+                    }
                   />
                   <div className="min-w-0">
                     <h3 className="font-serif text-xl leading-snug text-foreground">
@@ -95,6 +111,13 @@ function Publications() {
           ))}
         </ol>
       </section>
+
+      <ImageLightbox
+        images={publicationImages}
+        activeIndex={activeIndex}
+        onClose={() => setActiveIndex(null)}
+        onChange={setActiveIndex}
+      />
     </PageLayout>
   );
 }
