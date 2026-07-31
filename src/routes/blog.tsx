@@ -38,14 +38,14 @@ function Blog() {
       title="Blog"
       intro="Occasional notes on research, methodology, and the engineering that makes models usable."
     >
-      <ul className="space-y-10">
+      <ul className="space-y-6">
         {posts.map((post) => (
-          <li key={post.slug} className="list-row flex flex-col gap-4 border-t border-border pt-8 sm:flex-row">
+          <li key={post.slug} className="list-row flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:gap-5">
             <MediaThumb src={post.image} alt={post.title} />
             <div>
               <p className="text-meta text-muted-foreground">{formatDate(post.date)}</p>
-              <h2 className="mt-2 font-serif text-xl leading-snug text-foreground">{post.title}</h2>
-              <p className="prose-justify mt-3 text-muted-foreground">{post.excerpt}</p>
+              <h2 className="mt-1 font-serif text-xl leading-snug text-foreground">{post.title}</h2>
+              <p className="prose-justify mt-1.5 text-muted-foreground">{post.excerpt}</p>
             </div>
           </li>
         ))}

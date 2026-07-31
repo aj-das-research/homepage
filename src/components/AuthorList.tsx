@@ -3,7 +3,7 @@ import { profile } from "@/data/profile";
 export function AuthorList({ authors }: { authors: string }) {
   const parts = authors.split(/(Abhijit Das)/g);
   return (
-    <p className="text-meta text-muted-foreground">
+    <p className="text-meta leading-snug text-muted-foreground">
       {parts.map((part, i) =>
         part === "Abhijit Das" ? (
           <a

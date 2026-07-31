@@ -5,6 +5,23 @@ import zongyuanPhoto from "@/assets/media/collaborators/zongyuange.png";
 import ulasPhoto from "@/assets/media/collaborators/ulas.png";
 import marcosPhoto from "@/assets/media/collaborators/marcos.png";
 import mauricioPhoto from "@/assets/media/collaborators/mauricioreyes.png";
+import imranRecommendation from "@/assets/media/recommendations/imran.png";
+import behzadRecommendation from "@/assets/media/recommendations/behzad.png";
+import rafiqPhoto from "@/assets/media/student_collaborators/rafiq.png";
+import cristinaPhoto from "@/assets/media/student_collaborators/cristina.png";
+import ebadPhoto from "@/assets/media/student_collaborators/ebad.png";
+import adinathPhoto from "@/assets/media/student_collaborators/adinath.png";
+import amnaPhoto from "@/assets/media/student_collaborators/amna.png";
+import yifanPhoto from "@/assets/media/student_collaborators/yifan.png";
+import utathyaPhoto from "@/assets/media/student_collaborators/utathya.png";
+import shreyaPhoto from "@/assets/media/student_collaborators/shreya.png";
+import vandanPhoto from "@/assets/media/student_collaborators/vandan.png";
+import sayantanPhoto from "@/assets/media/student_collaborators/sayantan.png";
+import joyPhoto from "@/assets/media/student_collaborators/joy.png";
+import debayanPhoto from "@/assets/media/student_collaborators/debayan.png";
+import shadabPhoto from "@/assets/media/student_collaborators/shadab.png";
+import rishabhPhoto from "@/assets/media/student_collaborators/rishabh.png";
+import debeshPhoto from "@/assets/media/student_collaborators/debesh.png";
 
 export type CollaboratorRole = {
   title: string;
@@ -30,6 +47,7 @@ export const supervisors: Collaborator[] = [
     roles: [
       { title: "Associate Professor of Computational Biology" },
       { title: "Director, GenMI Lab", href: "https://www.genmi.info/" },
+      { title: "CEO, MedOS Limited", href: "https://www.medos.tech" },
     ],
     affiliation: "MBZUAI, UAE",
     website: "https://imranrazzak.github.io/",
@@ -39,7 +57,7 @@ export const supervisors: Collaborator[] = [
   },
 ];
 
-export const collaborators: Collaborator[] = [
+export const mentors: Collaborator[] = [
   {
     name: "Dwarikanath Mahapatra",
     roles: [{ title: "Assistant Professor of Computer Science" }],
@@ -117,45 +135,111 @@ export const collaborators: Collaborator[] = [
   },
 ];
 
-export type Endorsement = {
-  quote: string;
+/** Students / peers shown as a compact photo grid. */
+export type PeerCollaborator = {
   name: string;
-  /** Short title, e.g. Associate Professor. */
-  role: string;
-  /** University, Country. */
-  affiliation: string;
-  /** University homepage. */
-  affiliationHref?: string;
-  /** Personal homepage / profile link for the endorser. */
+  image?: string;
+  href?: string;
+};
+
+/**
+ * Drop small headshots under src/assets/media/student_collaborators/ and add entries here.
+ */
+export const peerCollaborators: PeerCollaborator[] = [
+  {
+    name: "Adinath Dukre",
+    image: adinathPhoto,
+    href: "https://www.linkedin.com/in/adinath-dukre-6a3261243/",
+  },
+  {
+    name: "Amna Bano",
+    image: amnaPhoto,
+    href: "https://www.linkedin.com/in/amna-bano-0379523a2/",
+  },
+  {
+    name: "Cristina Correa",
+    image: cristinaPhoto,
+    href: "https://www.linkedin.com/in/cristina-correa-segade/",
+  },
+  {
+    name: "Debayan Ganguly",
+    image: debayanPhoto,
+    href: "https://www.linkedin.com/in/debayan-ganguly-2442931b/",
+  },
+  {
+    name: "Debesh Jha",
+    image: debeshPhoto,
+    href: "https://www.linkedin.com/in/debesh-jha-ph-d-071462aa/",
+  },
+  {
+    name: "Ebad Shabbir",
+    image: ebadPhoto,
+    href: "https://www.linkedin.com/in/ebad-shabbir-b9b34a282/",
+  },
+  {
+    name: "Joy Dhar",
+    image: joyPhoto,
+    href: "https://www.linkedin.com/in/joy-dhar-42930a248/",
+  },
+  {
+    name: "Rafiq Ali",
+    image: rafiqPhoto,
+    href: "https://www.linkedin.com/in/rafiq-ali-a2236a299/",
+  },
+  {
+    name: "Rishabh Lalla",
+    image: rishabhPhoto,
+    href: "https://www.linkedin.com/in/rishabh-lalla/",
+  },
+  {
+    name: "Sayantan Dutta",
+    image: sayantanPhoto,
+    href: "https://www.linkedin.com/in/sayantan-dutta/",
+  },
+  {
+    name: "Shadab Khan",
+    image: shadabPhoto,
+    href: "https://www.linkedin.com/in/skhanshadab/",
+  },
+  {
+    name: "Shreya Kumari",
+    image: shreyaPhoto,
+    href: "https://www.linkedin.com/in/shreyakumari0301/",
+  },
+  {
+    name: "Utathya Aich",
+    image: utathyaPhoto,
+    href: "https://www.linkedin.com/in/utathyaaich/",
+  },
+  {
+    name: "Vandan Gorade",
+    image: vandanPhoto,
+    href: "https://www.linkedin.com/in/vandan-g-b3851b168/",
+  },
+  {
+    name: "Yifan Lu",
+    image: yifanPhoto,
+    href: "https://www.linkedin.com/in/yifan-lu-bb5347335/",
+  },
+];
+
+export type Endorsement = {
+  name: string;
+  /** LinkedIn recommendation screenshot. */
+  image: string;
+  /** Optional link (e.g. LinkedIn / personal site). */
   href?: string;
 };
 
 export const endorsements: Endorsement[] = [
   {
-    quote:
-      "Abhijit combines research depth with the discipline to turn ideas into reliable systems. He is a strong contributor to trustworthy medical AI and a pleasure to supervise.",
     name: "Imran Razzak",
-    role: "Associate Professor",
-    affiliation: "MBZUAI, UAE",
-    affiliationHref: "https://mbzuai.ac.ae/",
-    href: "https://imranrazzak.github.io/",
+    image: imranRecommendation,
+    href: "https://www.linkedin.com/in/imran-razzak-88a88b17/",
   },
   {
-    quote:
-      "Working with Abhijit on medical vision and multimodal learning has been excellent — careful reasoning, strong engineering judgment, and a clear sense of what matters in practice.",
     name: "Behzad Bozorgtabar",
-    role: "Associate Professor",
-    affiliation: "Aarhus University, Denmark",
-    affiliationHref: "https://www.au.dk/",
-    href: "https://behzadbozorgtabar.com/",
-  },
-  {
-    quote:
-      "Abhijit brings clarity and rigor to collaborative research. He thinks carefully about uncertainty and builds work that is both scientifically sound and clinically relevant.",
-    name: "Dwarikanath Mahapatra",
-    role: "Assistant Professor",
-    affiliation: "Khalifa University, UAE",
-    affiliationHref: "https://www.ku.ac.ae/",
-    href: "https://www.ku.ac.ae/college-people/dwarikanath-mahapatra/",
+    image: behzadRecommendation,
+    href: "https://www.linkedin.com/in/behzad-bozorgtabar-72838560",
   },
 ];

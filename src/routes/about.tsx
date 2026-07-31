@@ -35,7 +35,7 @@ function SectionHeading({ children }: { children: string }) {
 function About() {
   return (
     <PageLayout title="About">
-      <div className="space-y-5">
+      <div className="space-y-3.5">
         {profile.longBio.map((para) => (
           <p key={para.slice(0, 32)} className="prose-justify text-muted-foreground">
             {para}
@@ -43,9 +43,9 @@ function About() {
         ))}
       </div>
 
-      <section className="mt-14">
+      <section className="mt-10">
         <SectionHeading>Education</SectionHeading>
-        <ul className="mt-6 space-y-8">
+        <ul className="mt-5 space-y-6">
           {education.map((item) => (
             <li key={item.school}>
               <h3 className="font-serif text-xl leading-snug text-foreground">
@@ -67,9 +67,9 @@ function About() {
         </ul>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-10">
         <SectionHeading>Experience</SectionHeading>
-        <ul className="mt-6 space-y-10">
+        <ul className="mt-5 space-y-7">
           {experience.map((job) => (
             <li key={`${job.org}-${job.period}`}>
               <h3 className="font-serif text-xl leading-snug text-foreground">{job.org}</h3>
@@ -89,9 +89,9 @@ function About() {
         </ul>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-10">
         <SectionHeading>Skills</SectionHeading>
-        <dl className="mt-6 space-y-5">
+        <dl className="mt-5 space-y-3">
           {skills.map((group) => (
             <div key={group.label}>
               <dt className="font-semibold text-foreground">{group.label}</dt>
@@ -101,9 +101,9 @@ function About() {
         </dl>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-10">
         <SectionHeading>Awards</SectionHeading>
-        <ul className="mt-6 space-y-4">
+        <ul className="mt-5 space-y-3">
           {awards.map((award) => (
             <li key={award.title}>
               <p className="text-foreground">{award.title}</p>
@@ -113,9 +113,9 @@ function About() {
         </ul>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-10">
         <SectionHeading>Contact</SectionHeading>
-        <dl className="mt-6 space-y-3">
+        <dl className="mt-5 space-y-2">
           <div className="flex gap-4">
             <dt className="w-28 shrink-0 text-muted-foreground">Email</dt>
             <dd>

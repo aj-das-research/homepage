@@ -5,14 +5,14 @@ const nav = [
   { to: "/publications", label: "Publications" },
   { to: "/projects", label: "Projects" },
   { to: "/blog", label: "Blog" },
-  { to: "/collaborators", label: "Collaborators" },
+  { to: "/mentors", label: "Collaborators" },
   { to: "/gallery", label: "Gallery" },
 ] as const;
 
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="mx-auto flex max-w-5xl flex-col gap-3 px-6 py-5 sm:flex-row sm:items-baseline sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4 sm:flex-row sm:items-baseline sm:justify-between">
         <Link
           to="/"
           className="nav-link font-serif text-[19px] font-bold tracking-tight text-foreground hover:text-accent"

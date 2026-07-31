@@ -31,16 +31,16 @@ function Projects() {
       title="Ongoing projects"
       intro="The research areas and systems I am actively working on."
     >
-      <ul className="space-y-12">
+      <ul className="space-y-8">
         {projects.map((project) => (
-          <li key={project.title} className="list-row flex flex-col gap-5 sm:flex-row">
+          <li key={project.title} className="list-row flex flex-col gap-3 sm:flex-row sm:gap-5">
             <MediaThumb src={project.image} alt={project.title} />
             <div>
               <h2 className="font-serif text-xl leading-snug text-foreground">{project.title}</h2>
-              <p className="text-meta mt-1 uppercase tracking-[0.1em] text-accent">
+              <p className="text-meta mt-0.5 uppercase tracking-[0.1em] text-accent">
                 {project.works}
               </p>
-              <p className="prose-justify mt-4 text-muted-foreground">{project.description}</p>
+              <p className="prose-justify mt-2 text-muted-foreground">{project.description}</p>
             </div>
           </li>
         ))}

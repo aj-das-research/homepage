@@ -16,9 +16,10 @@ export function squareGridDims(n: number): { cols: number; rows: number } {
   for (let cols = min; cols <= max; cols++) {
     const rows = Math.ceil(n / cols);
     const empty = cols * rows - n;
-    const skew = Math.abs(cols / rows - 1);
+    // Symmetric aspect skew so 2×1 and 1×2 score the same shape.
+    const skew = Math.max(cols, rows) / Math.min(cols, rows) - 1;
     // Prefer near-square, few empties, and wider-than-tall over tall-and-narrow.
-    const score = skew * 10 + empty * 2 + (cols < rows ? 2 : 0);
+    const score = skew * 10 + empty * 2 + (cols < rows ? 3 : 0);
     if (score < bestScore) {
       bestScore = score;
       bestCols = cols;

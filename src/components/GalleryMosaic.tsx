@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { chunkIntoSquareRows } from "@/lib/square-photo-grid";
+import { chunkIntoSquareRows, squareGridDims } from "@/lib/square-photo-grid";
 import type { GalleryPhoto } from "@/data/gallery";
 import {
   Dialog,
@@ -44,13 +44,17 @@ export function GalleryMosaic({
   if (photos.length === 0) return null;
 
   const indexed = photos.map((photo, index) => ({ photo, index }));
+  const { cols, rows: rowCount } = squareGridDims(photos.length);
   const rows = chunkIntoSquareRows(indexed);
   const active = activeIndex == null ? null : photos[activeIndex];
   const showNav = photos.length > 1;
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
-      <div className="flex aspect-square flex-col gap-2 sm:gap-3">
+    <div className="mx-auto w-full max-w-4xl">
+      <div
+        className="flex flex-col gap-2 sm:gap-3"
+        style={{ aspectRatio: `${cols} / ${rowCount}` }}
+      >
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex min-h-0 flex-1 gap-2 sm:gap-3">
             {row.map(({ photo, index }) => (

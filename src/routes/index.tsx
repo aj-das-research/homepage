@@ -66,10 +66,10 @@ function formatUpdate(date: string) {
 }
 
 function renderBio(para: string) {
-  if (!para.includes("Access my CV") && !para.includes(profile.email)) return para;
-  const parts = para.split(/(Access my CV|\S+@\S+?\.ae)/g);
+  if (!para.includes("available here") && !para.includes(profile.email)) return para;
+  const parts = para.split(/(available here|\S+@\S+?\.ae)/g);
   return parts.map((part, i) => {
-    if (part === "Access my CV") {
+    if (part === "available here") {
       return (
         <a key={i} href={profile.cvUrl} target="_blank" rel="noreferrer">
           {part}
@@ -112,12 +112,12 @@ function renderUpdateText(text: string, href?: string, linkLabel?: string) {
 function Home() {
   return (
     <main>
-      <section className="rise-in mx-auto w-full max-w-5xl px-6 py-16 md:py-24">
+      <section className="rise-in mx-auto w-full max-w-6xl px-6 py-12 md:py-16">
         <h1 className="font-serif text-3xl text-foreground sm:text-4xl">About</h1>
 
-        <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-[280px_1fr] md:gap-16">
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-[280px_1fr] md:gap-12">
           {/* Left column: photo + designations + icon links */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             <div className="media-hover aspect-[3/4] w-full max-w-[260px] overflow-hidden border border-border bg-card">
               <img
                 src={profile.photoUrl}
@@ -128,7 +128,7 @@ function Home() {
               />
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               <p className="text-foreground">
                 PhD in Machine Learning,{" "}
                 <a href={profile.mbzuaiUrl} target="_blank" rel="noreferrer">
@@ -161,7 +161,7 @@ function Home() {
           </div>
 
           {/* Right column: about paragraph */}
-          <div className="space-y-5">
+          <div className="space-y-3.5">
             {profile.longBio.map((para) => (
               <p key={para.slice(0, 32)} className="prose-justify text-muted-foreground">
                 {renderBio(para)}
@@ -170,7 +170,7 @@ function Home() {
           </div>
         </div>
 
-        <figure className="mt-16 border-t border-border pt-10">
+        <figure className="mt-12 border-t border-border pt-8">
           <blockquote className="relative mx-auto max-w-2xl px-6 text-center">
             <span
               aria-hidden
@@ -178,20 +178,20 @@ function Home() {
             >
               “
             </span>
-            <p className="font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
+            <p className="font-serif text-xl leading-snug text-foreground sm:text-2xl">
               {profile.quote.text}
             </p>
-            <figcaption className="mt-4 text-[15px] tracking-[0.04em] text-muted-foreground">
+            <figcaption className="mt-3 text-[15px] tracking-[0.04em] text-muted-foreground">
               — {profile.quote.author}
             </figcaption>
           </blockquote>
         </figure>
 
-        <section className="mt-16 border-t border-border pt-10">
+        <section className="mt-12 border-t border-border pt-8">
           <h2 className="font-serif text-xl text-foreground">Updates</h2>
-          <ul className="mt-6 space-y-4">
+          <ul className="mt-5 space-y-3">
             {latestUpdates.map((item) => (
-              <li key={item.date + item.text} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
+              <li key={item.date + item.text} className="flex flex-col gap-0.5 sm:flex-row sm:gap-6">
                 <time
                   dateTime={item.date}
                   className="shrink-0 text-[15px] uppercase tracking-[0.08em] text-accent sm:w-40"

@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BlogRouteImport } from './routes/blog'
-import { Route as CollaboratorsRouteImport } from './routes/collaborators'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
 
@@ -32,14 +32,14 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CollaboratorsRoute = CollaboratorsRouteImport.update({
-  id: '/collaborators',
-  path: '/collaborators',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorsRoute = MentorsRouteImport.update({
+  id: '/mentors',
+  path: '/mentors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -57,8 +57,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/collaborators': typeof CollaboratorsRoute
   '/gallery': typeof GalleryRoute
+  '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
 }
@@ -66,8 +66,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/collaborators': typeof CollaboratorsRoute
   '/gallery': typeof GalleryRoute
+  '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
 }
@@ -76,8 +76,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/collaborators': typeof CollaboratorsRoute
   '/gallery': typeof GalleryRoute
+  '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
 }
@@ -87,8 +87,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blog'
-    | '/collaborators'
     | '/gallery'
+    | '/mentors'
     | '/projects'
     | '/publications'
   fileRoutesByTo: FileRoutesByTo
@@ -96,8 +96,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blog'
-    | '/collaborators'
     | '/gallery'
+    | '/mentors'
     | '/projects'
     | '/publications'
   id:
@@ -105,8 +105,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blog'
-    | '/collaborators'
     | '/gallery'
+    | '/mentors'
     | '/projects'
     | '/publications'
   fileRoutesById: FileRoutesById
@@ -115,8 +115,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRoute
-  CollaboratorsRoute: typeof CollaboratorsRoute
   GalleryRoute: typeof GalleryRoute
+  MentorsRoute: typeof MentorsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
 }
@@ -144,18 +144,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/collaborators': {
-      id: '/collaborators'
-      path: '/collaborators'
-      fullPath: '/collaborators'
-      preLoaderRoute: typeof CollaboratorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentors': {
+      id: '/mentors'
+      path: '/mentors'
+      fullPath: '/mentors'
+      preLoaderRoute: typeof MentorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -179,8 +179,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogRoute: BlogRoute,
-  CollaboratorsRoute: CollaboratorsRoute,
   GalleryRoute: GalleryRoute,
+  MentorsRoute: MentorsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
 }

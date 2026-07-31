@@ -47,15 +47,20 @@ function Publications() {
         const items = publications.filter((p) => p.year === year);
         if (items.length === 0) return null;
         return (
-          <section key={year} className="mt-14">
+          <section key={year} className="mt-10">
             <h2 className="pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
               {year}
             </h2>
-            <ol className="mt-6 space-y-8">
+            <ol className="mt-5 space-y-6">
               {items.map((pub) => (
-                <li key={pub.title} className="flex flex-col gap-5 sm:flex-row">
-                  <MediaThumb src={pub.image} alt={pub.title} />
-                  <div>
+                <li key={pub.title} className="flex flex-col gap-3 sm:flex-row sm:gap-5">
+                  <MediaThumb
+                    src={pub.image}
+                    alt={pub.title}
+                    caption={pub.venue}
+                    captionHref={pub.href}
+                  />
+                  <div className="min-w-0">
                     <h3 className="font-serif text-xl leading-snug text-foreground">
                       {pub.href ? (
                         <a href={pub.href} target="_blank" rel="noreferrer">
@@ -66,10 +71,7 @@ function Publications() {
                       )}
                     </h3>
                     <AuthorList authors={pub.authors} />
-                    <p className="text-meta mt-1 italic text-accent">
-                      {pub.venue}
-                    </p>
-                    <p className="prose-justify mt-2 text-muted-foreground">
+                    <p className="prose-justify mt-1.5 text-muted-foreground">
                       {pub.summary}
                     </p>
                   </div>
@@ -80,11 +82,11 @@ function Publications() {
         );
       })}
 
-      <section className="mt-14">
+      <section className="mt-10">
         <h2 className="pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
           Patents
         </h2>
-        <ol className="mt-6 space-y-8">
+        <ol className="mt-5 space-y-5">
           {patents.map((p) => (
             <li key={p.title}>
               <h3 className="font-serif text-xl leading-snug text-foreground">{p.title}</h3>

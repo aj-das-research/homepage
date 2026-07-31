@@ -1,179 +1,135 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Endorsement } from "@/data/collaborators";
-
-const AUTO_MS = 4000;
-const SLIDE_MS = 550;
-const GAP_PX = 16;
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export function EndorsementCarousel({ items }: { items: Endorsement[] }) {
-  const count = items.length;
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const lockedRef = useRef(false);
-  const [index, setIndex] = useState(0);
-  const [animate, setAnimate] = useState(true);
-  const [paused, setPaused] = useState(false);
-  const [stepPx, setStepPx] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const el = viewportRef.current;
-    if (!el) return;
+    if (activeIndex == null || items.length < 2) return;
 
-    const measure = () => {
-      const visible = window.matchMedia("(min-width: 640px)").matches ? 2 : 1;
-      const cardW = (el.clientWidth - GAP_PX * (visible - 1)) / visible;
-      setStepPx(cardW + GAP_PX);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        setActiveIndex((i) =>
+          i == null ? i : (i - 1 + items.length) % items.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        setActiveIndex((i) => (i == null ? i : (i + 1) % items.length));
+      }
     };
 
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeIndex, items.length]);
 
-  useEffect(() => {
-    if (paused || count < 2 || stepPx === 0) return;
+  if (items.length === 0) return null;
 
-    const id = window.setInterval(() => {
-      if (lockedRef.current) return;
-      lockedRef.current = true;
-      setAnimate(true);
-      setIndex((i) => i + 1);
-
-      window.setTimeout(() => {
-        setAnimate(false);
-        setIndex((i) => (i >= count ? 0 : i < 0 ? count - 1 : i));
-        window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(() => {
-            setAnimate(true);
-            lockedRef.current = false;
-          });
-        });
-      }, SLIDE_MS);
-    }, AUTO_MS);
-
-    return () => window.clearInterval(id);
-  }, [paused, count, stepPx]);
-
-  if (count === 0) return null;
-
-  function slide(delta: 1 | -1) {
-    if (lockedRef.current || count < 2) return;
-    lockedRef.current = true;
-    setAnimate(true);
-    setIndex((i) => i + delta);
-
-    window.setTimeout(() => {
-      setAnimate(false);
-      setIndex((i) => {
-        if (i >= count) return 0;
-        if (i < 0) return count - 1;
-        return i;
-      });
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => {
-          setAnimate(true);
-          lockedRef.current = false;
-        });
-      });
-    }, SLIDE_MS);
-  }
-
-  const track = [...items, ...items, ...items];
-  const offset = count + index;
-  const cardWidth = stepPx > 0 ? stepPx - GAP_PX : undefined;
+  const active = activeIndex == null ? null : items[activeIndex];
+  const showNav = items.length > 1;
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div
-        ref={viewportRef}
-        className="overflow-hidden"
-        style={{ opacity: stepPx ? 1 : 0 }}
-      >
-        <div
-          className="flex"
-          style={{
-            gap: GAP_PX,
-            transform: stepPx ? `translateX(-${offset * stepPx}px)` : undefined,
-            transition: animate
-              ? `transform ${SLIDE_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`
-              : "none",
-            willChange: "transform",
-          }}
-        >
-          {track.map((item, i) => (
-            <article
-              key={`${item.name}-${i}`}
-              className="flex min-h-[220px] shrink-0 flex-col justify-between border border-border bg-card p-6"
-              style={cardWidth ? { width: cardWidth, maxWidth: cardWidth } : { width: "100%" }}
+    <div>
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {items.map((item, index) => (
+          <li key={item.name}>
+            <button
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`View recommendation from ${item.name}`}
+              className="media-hover relative flex h-[180px] w-full cursor-zoom-in items-center justify-center overflow-hidden border border-border bg-white p-2 sm:h-[200px] sm:p-3 md:h-[220px]"
             >
-              <blockquote>
-                <span
-                  aria-hidden
-                  className="mb-2 block font-serif text-5xl leading-none text-accent"
-                >
-                  “
-                </span>
-                <p className="prose-justify font-serif leading-relaxed text-foreground">
-                  {item.quote}
-                </p>
-              </blockquote>
-              <footer className="mt-6 border-t border-border pt-4">
-                <p className="font-medium text-foreground">
-                  —{" "}
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noreferrer">
-                      {item.name}
-                    </a>
-                  ) : (
-                    item.name
-                  )}
-                </p>
-                <p className="text-meta mt-0.5 text-foreground">{item.role}</p>
-                <p className="text-meta text-muted-foreground">
-                  {item.affiliationHref ? (
-                    <a href={item.affiliationHref} target="_blank" rel="noreferrer">
-                      {item.affiliation}
-                    </a>
-                  ) : (
-                    item.affiliation
-                  )}
-                </p>
-              </footer>
-            </article>
-          ))}
-        </div>
-      </div>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-2 top-0 font-serif text-4xl leading-none text-accent sm:left-3 sm:text-5xl"
+              >
+                “
+              </span>
+              <img
+                src={item.image}
+                alt={`Recommendation from ${item.name}`}
+                loading="lazy"
+                className="max-h-full max-w-full object-contain"
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
 
-      {count > 1 ? (
-        <div className="mt-5 flex items-center justify-between">
-          <div className="flex gap-2">
+      <Dialog
+        open={activeIndex != null}
+        onOpenChange={(open) => {
+          if (!open) setActiveIndex(null);
+        }}
+      >
+        <DialogContent
+          className="flex h-[100dvh] w-screen max-w-none translate-x-[-50%] translate-y-[-50%] items-center justify-center border-0 bg-transparent p-0 shadow-none sm:rounded-none"
+          aria-describedby={undefined}
+        >
+          <DialogTitle className="sr-only">
+            {active
+              ? `Recommendation from ${active.name}`
+              : "Endorsement"}
+          </DialogTitle>
+
+          {showNav ? (
             <button
               type="button"
-              onClick={() => slide(-1)}
-              aria-label="Previous endorsements"
-              className="inline-flex h-9 w-9 items-center justify-center border border-border bg-card text-foreground hover:border-primary hover:text-primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveIndex((i) =>
+                  i == null ? i : (i - 1 + items.length) % items.length,
+                );
+              }}
+              aria-label="Previous endorsement"
+              className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground backdrop-blur transition-colors hover:bg-background sm:left-6"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-6 w-6" />
             </button>
+          ) : null}
+
+          {active ? (
+            <div className="flex max-h-[100dvh] max-w-[100vw] flex-col items-center gap-3 px-16 py-12 sm:px-20">
+              <div className="flex h-[min(62dvh,480px)] w-[min(92vw,960px)] items-center justify-center border border-border bg-white p-4 sm:p-6">
+                <img
+                  src={active.image}
+                  alt={`Recommendation from ${active.name}`}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <p className="text-[14px] text-muted-foreground">
+                {active.name}
+                {showNav && activeIndex != null
+                  ? ` - ${activeIndex + 1} / ${items.length}`
+                  : ""}
+              </p>
+            </div>
+          ) : null}
+
+          {showNav ? (
             <button
               type="button"
-              onClick={() => slide(1)}
-              aria-label="Next endorsements"
-              className="inline-flex h-9 w-9 items-center justify-center border border-border bg-card text-foreground hover:border-primary hover:text-primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveIndex((i) =>
+                  i == null ? i : (i + 1) % items.length,
+                );
+              }}
+              aria-label="Next endorsement"
+              className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground backdrop-blur transition-colors hover:bg-background sm:right-6"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-6 w-6" />
             </button>
-          </div>
-          <p className="text-[13px] text-muted-foreground">
-            {((index % count) + count) % count + 1} / {count}
-          </p>
-        </div>
-      ) : null}
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
