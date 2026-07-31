@@ -40,7 +40,7 @@ function Projects() {
               <p className="text-meta mt-0.5 uppercase tracking-[0.1em] text-accent">
                 {project.works}
               </p>
-              <p className="prose-justify mt-2 text-muted-foreground">{project.description}</p>
+              <p className="prose-justify mt-2 text-[16px] leading-snug text-muted-foreground">{project.description}</p>
             </div>
           </li>
         ))}

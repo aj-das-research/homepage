@@ -45,7 +45,7 @@ function Blog() {
             <div>
               <p className="text-meta text-muted-foreground">{formatDate(post.date)}</p>
               <h2 className="mt-1 font-serif text-xl leading-snug text-foreground">{post.title}</h2>
-              <p className="prose-justify mt-1.5 text-muted-foreground">{post.excerpt}</p>
+              <p className="prose-justify mt-1.5 text-[16px] leading-snug text-muted-foreground">{post.excerpt}</p>
             </div>
           </li>
         ))}

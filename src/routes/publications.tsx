@@ -71,7 +71,7 @@ function Publications() {
                       )}
                     </h3>
                     <AuthorList authors={pub.authors} />
-                    <p className="prose-justify mt-1.5 text-muted-foreground">
+                    <p className="prose-justify mt-1.5 text-[16px] leading-snug text-muted-foreground">
                       {pub.summary}
                     </p>
                   </div>
