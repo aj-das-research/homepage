@@ -96,6 +96,15 @@ export const mentors: Collaborator[] = [
     image: zongyuanPhoto,
   },
   {
+    name: "Marcos Matabuena",
+    roles: [{ title: "Assistant Professor of Epidemiology" }],
+    affiliation: "MBZUAI, UAE",
+    website: "https://mbzuai.ac.ae/study/faculty/marcos-matabuena/",
+    scholar: "https://scholar.google.com/citations?user=qaEtbuEAAAAJ&hl=en",
+    linkedin: "https://www.linkedin.com/in/marcos-matabuena-268366126",
+    image: marcosPhoto,
+  },
+  {
     name: "Ulas Bagci",
     roles: [
       { title: "Associate Professor of Radiology" },
@@ -111,13 +120,16 @@ export const mentors: Collaborator[] = [
     image: ulasPhoto,
   },
   {
-    name: "Marcos Matabuena",
-    roles: [{ title: "Assistant Professor of Epidemiology" }],
-    affiliation: "MBZUAI, UAE",
-    website: "https://mbzuai.ac.ae/study/faculty/marcos-matabuena/",
-    scholar: "https://scholar.google.com/citations?user=qaEtbuEAAAAJ&hl=en",
-    linkedin: "https://www.linkedin.com/in/marcos-matabuena-268366126",
-    image: marcosPhoto,
+    name: "Shadab Khan",
+    roles: [
+      { title: "Senior Scientist" },
+      { title: "Health Science Lead, ADIA Lab", href: "https://www.adialab.ae/" },
+    ],
+    affiliation: "ADIA Lab, UAE",
+    scholar:
+      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Shadab+Khan+ADIA&hl=en",
+    linkedin: "https://www.linkedin.com/in/skhanshadab/",
+    image: shadabPhoto,
   },
   {
     name: "Mauricio Reyes",
@@ -155,7 +167,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Adinath Dukre",
     image: adinathPhoto,
     href: "https://www.linkedin.com/in/adinath-dukre-6a3261243/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Adinath+Dukre&hl=en",
   },
@@ -163,7 +175,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Amna Bano",
     image: amnaPhoto,
     href: "https://www.linkedin.com/in/amna-bano-0379523a2/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Amna+Bano&hl=en",
   },
@@ -171,7 +183,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Cristina Correa",
     image: cristinaPhoto,
     href: "https://www.linkedin.com/in/cristina-correa-segade/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Cristina+Correa+Segade&hl=en",
   },
@@ -179,7 +191,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Debayan Ganguly",
     image: debayanPhoto,
     href: "https://www.linkedin.com/in/debayan-ganguly-2442931b/",
-    institute: "GCELT",
+    institute: "GCELT, India",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Debayan+Ganguly&hl=en",
   },
@@ -187,14 +199,14 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Debesh Jha",
     image: debeshPhoto,
     href: "https://www.linkedin.com/in/debesh-jha-ph-d-071462aa/",
-    institute: "USD",
+    institute: "USD, USA",
     scholar: "https://scholar.google.com/citations?user=mMTyE68AAAAJ&hl=en",
   },
   {
     name: "Ebad Shabbir",
     image: ebadPhoto,
     href: "https://www.linkedin.com/in/ebad-shabbir-b9b34a282/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Ebad+Shabbir&hl=en",
   },
@@ -202,7 +214,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Joy Dhar",
     image: joyPhoto,
     href: "https://www.linkedin.com/in/joy-dhar-42930a248/",
-    institute: "IIT Ropar",
+    institute: "IIT Ropar, India",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Joy+Dhar+IIT+Ropar&hl=en",
   },
@@ -210,7 +222,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Rafiq Ali",
     image: rafiqPhoto,
     href: "https://www.linkedin.com/in/rafiq-ali-a2236a299/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Rafiq+Ali+MBZUAI&hl=en",
   },
@@ -218,7 +230,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Rishabh Lalla",
     image: rishabhPhoto,
     href: "https://www.linkedin.com/in/rishabh-lalla/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Rishabh+Lalla&hl=en",
   },
@@ -226,23 +238,15 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Sayantan Dutta",
     image: sayantanPhoto,
     href: "https://www.linkedin.com/in/sayantan-dutta/",
-    institute: "GE Healthcare",
+    institute: "GE Healthcare, India",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Sayantan+Dutta+GE+HealthCare&hl=en",
-  },
-  {
-    name: "Shadab Khan",
-    image: shadabPhoto,
-    href: "https://www.linkedin.com/in/skhanshadab/",
-    institute: "ADIA Lab",
-    scholar:
-      "https://scholar.google.com/citations?view_op=search_authors&mauthors=Shadab+Khan+ADIA&hl=en",
   },
   {
     name: "Shreya Kumari",
     image: shreyaPhoto,
     href: "https://www.linkedin.com/in/shreyakumari0301/",
-    institute: "IIT Madras",
+    institute: "IIT Madras, India",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Shreya+Kumari+IIT+Madras&hl=en",
   },
@@ -250,7 +254,7 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Utathya Aich",
     image: utathyaPhoto,
     href: "https://www.linkedin.com/in/utathyaaich/",
-    institute: "Jadavpur",
+    institute: "Jadavpur, India",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Utathya+Aich&hl=en",
   },
@@ -258,22 +262,21 @@ export const peerCollaborators: PeerCollaborator[] = [
     name: "Vandan Gorade",
     image: vandanPhoto,
     href: "https://www.linkedin.com/in/vandan-g-b3851b168/",
-    institute: "Northwestern",
+    institute: "Northwestern, USA",
     scholar: "https://scholar.google.com/citations?user=OsJYrdEAAAAJ&hl=en",
   },
   {
     name: "Xiang Meng",
     image: xiangPhoto,
     href: "https://www.linkedin.com/in/xiang-meng-stat/",
-    institute: "Harvard",
-    scholar:
+    institute: "Harvard, USA",    scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Xiang+Meng+Harvard+Statistics&hl=en",
   },
   {
     name: "Yifan Lu",
     image: yifanPhoto,
     href: "https://www.linkedin.com/in/yifan-lu-bb5347335/",
-    institute: "MBZUAI",
+    institute: "MBZUAI, UAE",
     scholar:
       "https://scholar.google.com/citations?view_op=search_authors&mauthors=Yifan+Lu+MBZUAI&hl=en",
   },

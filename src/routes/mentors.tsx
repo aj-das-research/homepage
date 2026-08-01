@@ -93,7 +93,7 @@ function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
   const labelClass =
     "mt-1.5 text-center font-serif text-[15px] leading-snug";
   return (
-    <li className="flex w-28 flex-col items-center sm:w-36">
+    <li className="flex w-32 flex-col items-center sm:w-40">
       <div className="relative">
         <PersonPhoto src={person.image} name={person.name} size="md" rounded />
         {person.scholar ? (
@@ -121,7 +121,7 @@ function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
         <span className={`${labelClass} text-foreground`}>{person.name}</span>
       )}
       {person.institute ? (
-        <p className="mt-0.5 text-center font-serif text-[15px] leading-snug text-muted-foreground">
+        <p className="mt-0.5 whitespace-nowrap text-center font-serif text-[12px] leading-snug text-muted-foreground">
           {person.institute}
         </p>
       ) : null}
@@ -147,6 +147,46 @@ function PeerCollaboratorGrid({ people }: { people: PeerCollaborator[] }) {
 function MentorsPage() {
   return (
     <PageLayout>
+      <figure className="mb-10 border-b border-border pb-8">
+        <blockquote className="relative mx-auto max-w-5xl text-left sm:text-justify">
+          <span
+            aria-hidden
+            className="float-left mr-2 font-serif text-4xl leading-none text-accent sm:text-5xl"
+          >
+            “
+          </span>
+          <p className="font-serif text-lg leading-snug text-foreground sm:text-xl">
+            My journey so far is dedicated to those who shaped my path.{" "}
+            <a
+              href="https://www.linkedin.com/in/debayan-ganguly-2442931b/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Debayan Ganguly
+            </a>{" "}
+            first pushed me toward AI;{" "}
+            <a
+              href="https://www.linkedin.com/in/dwarikanath-mahapatra-10897635"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Dwarikanath Mahapatra
+            </a>{" "}
+            and my supervisor,{" "}
+            <a
+              href="https://www.linkedin.com/in/imran-razzak-88a88b17/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Prof. Imran Razzak
+            </a>
+            , have given me immense support — I remain always grateful. And to
+            my parents: thank you for the values you gave me. I hope to make you
+            all proud through my work in health sciences and AI.
+          </p>
+        </blockquote>
+      </figure>
+
       <section>
         <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
           Supervisor
