@@ -16,6 +16,9 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
+import { Route as BlogSlugRouteImport } from './routes/blog_.$slug'
+import { Route as BlogAllRouteImport } from './routes/blog_.all'
+import { Route as ProjectsSlugRouteImport } from './routes/projects_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +55,21 @@ const PublicationsRoute = PublicationsRouteImport.update({
   path: '/publications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog_/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogAllRoute = BlogAllRouteImport.update({
+  id: '/blog_/all',
+  path: '/blog/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects_/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +79,9 @@ export interface FileRoutesByFullPath {
   '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/all': typeof BlogAllRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +91,9 @@ export interface FileRoutesByTo {
   '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/all': typeof BlogAllRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +104,9 @@ export interface FileRoutesById {
   '/mentors': typeof MentorsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/blog_/$slug': typeof BlogSlugRoute
+  '/blog_/all': typeof BlogAllRoute
+  '/projects_/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +118,9 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/projects'
     | '/publications'
+    | '/blog/$slug'
+    | '/blog/all'
+    | '/projects/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +130,9 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/projects'
     | '/publications'
+    | '/blog/$slug'
+    | '/blog/all'
+    | '/projects/$slug'
   id:
     | '__root__'
     | '/'
@@ -109,6 +142,9 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/projects'
     | '/publications'
+    | '/blog_/$slug'
+    | '/blog_/all'
+    | '/projects_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +155,9 @@ export interface RootRouteChildren {
   MentorsRoute: typeof MentorsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogAllRoute: typeof BlogAllRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +211,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog_/$slug': {
+      id: '/blog_/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog_/all': {
+      id: '/blog_/all'
+      path: '/blog/all'
+      fullPath: '/blog/all'
+      preLoaderRoute: typeof BlogAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects_/$slug': {
+      id: '/projects_/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +243,9 @@ const rootRouteChildren: RootRouteChildren = {
   MentorsRoute: MentorsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogAllRoute: BlogAllRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
