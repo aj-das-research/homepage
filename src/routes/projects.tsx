@@ -108,7 +108,7 @@ function Projects() {
   return (
     <PageLayout
       title="Projects"
-      intro="Research programs I lead or contribute to — active threads and closed work that still informs what comes next."
+      intro="Research programs I lead or contribute to."
     >
       <div className="space-y-10">
         <section className="space-y-5">
