@@ -1,13 +1,13 @@
-import uncertainty from "@/assets/media/uncertainty.jpg";
-import realtime from "@/assets/media/realtime.jpg";
-import entrust from "@/assets/media/entrust.jpg";
-import graphDiff from "@/assets/media/graph-diff.jpg";
-import lossLandscape from "@/assets/media/loss-landscape.jpg";
-import lesionLocalization from "@/assets/media/lesion-localization.jpg";
-import denoising from "@/assets/media/denoising.jpg";
-import segmentationAttention from "@/assets/media/segmentation-attention.jpg";
-import interpretability from "@/assets/media/interpretability.jpg";
-import medos from "@/assets/media/medos.jpg";
+import pubEntrust from "@/assets/media/pub-entrust.jpg";
+import pubProton from "@/assets/media/pub-proton.jpg";
+import pubGraphDiff from "@/assets/media/pub-graph-diff.jpg";
+import pubVillani from "@/assets/media/pub-villani.jpg";
+import pubEthical from "@/assets/media/pub-ethical.jpg";
+import pubLesion from "@/assets/media/pub-lesion.jpg";
+import pubProfonet from "@/assets/media/pub-profonet.jpg";
+import pubSeanet from "@/assets/media/pub-seanet.jpg";
+import pubPamUnet from "@/assets/media/pub-pam-unet.jpg";
+import pubDapodet from "@/assets/media/pub-dapodet.jpg";
 
 export type Publication = {
   title: string;
@@ -32,7 +32,7 @@ export const publications: Publication[] = [
     venue: "Preprint",
     summary:
       "When imaging modalities disagree, most fusion models silently average the conflict away. EnTrust models inter-modal conflict explicitly as a first-class signal, letting the network express how much each modality can be trusted for a given case. This yields calibrated predictions and an interpretable account of where and why the modalities diverge.",
-    image: entrust,
+    image: pubEntrust,
     href: "https://arxiv.org/abs/2606.21384",
   },
   {
@@ -43,7 +43,7 @@ export const publications: Publication[] = [
     venue: "MICCAI 2026",
     summary:
       "Deployed medical models constantly meet cases outside their training distribution. PROTON maintains prototype representations that adapt online at test time, flagging out-of-distribution inputs as they arrive rather than after a batch has been processed. It gives clinical vision-language systems a lightweight guardrail that needs no access to the original training data.",
-    image: uncertainty,
+    image: pubProton,
     href: "https://arxiv.org/abs/2606.20913",
   },
   {
@@ -54,7 +54,7 @@ export const publications: Publication[] = [
     venue: "MICCAI 2026",
     summary:
       "Re-identifying the same patient across scans requires reasoning about what changed and what did not. This work represents differences between studies as a graph structured by anatomy, aligning corresponding regions before comparing them. The anatomical structure makes matching robust to acquisition changes while keeping the comparison interpretable region by region.",
-    image: graphDiff,
+    image: pubGraphDiff,
     href: "https://arxiv.org/abs/2606.21368",
   },
   {
@@ -65,7 +65,7 @@ export const publications: Publication[] = [
     venue: "Preprint",
     summary:
       "This theoretical study asks what weight decay actually does to the geometry a transformer optimises over. Using a functional-analytic framing, it shows that weight decay induces Villani-type structure in the loss landscape, which in turn supports well-behaved optimisation and generalisation. The analysis links a common training heuristic to concrete properties of the objective.",
-    image: lossLandscape,
+    image: pubVillani,
     href: "https://arxiv.org/abs/2605.06599",
   },
   {
@@ -76,7 +76,7 @@ export const publications: Publication[] = [
     venue: "Frontiers in Medicine",
     summary:
       "Foundation models are entering clinical imaging faster than the norms governing them. This paper sets out a practical ethical framework covering data provenance, evaluation, bias auditing, deployment monitoring, and accountability for medical foundation models. It is written to be actionable for research groups and clinical teams rather than purely declarative.",
-    image: interpretability,
+    image: pubEthical,
     href: "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1544501/full",
   },
   {
@@ -88,8 +88,8 @@ export const publications: Publication[] = [
     venue: "MICCAI 2024",
     summary:
       "Lesion localization suffers when only a small fraction of X-rays carry box-level annotation. This method uses model confidence to decide which unlabelled predictions deserve to be treated as supervision, filtering noisy pseudo-labels before they corrupt training. It generalises across lesion types while relying on a small labelled core set.",
-    image: lesionLocalization,
-    href: "https://papers.miccai.org/miccai-2024/paper/3485_paper.pdf",
+    image: pubLesion,
+    href: "https://link.springer.com/chapter/10.1007/978-3-031-72378-0_23",
   },
   {
     title: "ProFONet: Prototypical Feature Space Optimized Network for Few-shot Classification",
@@ -98,7 +98,7 @@ export const publications: Publication[] = [
     venue: "ICPR 2024",
     summary:
       "Few-shot classification depends entirely on how well the feature space separates classes from a handful of examples. ProFONet optimises the prototypical feature space directly, shaping the embedding so that class prototypes stay compact and well separated. The result is stronger low-shot accuracy without additional data or larger backbones.",
-    image: medos,
+    image: pubProfonet,
     href: "https://link.springer.com/chapter/10.1007/978-3-031-78183-4_25",
   },
   {
@@ -109,7 +109,7 @@ export const publications: Publication[] = [
     venue: "ICPR 2024",
     summary:
       "Low-dose CT denoising must remove noise without erasing the fine structures clinicians rely on. SEANet rethinks the skip connections of an encoder-decoder network, fusing spatial and spectral information so that detail is carried forward while noise is not. The design improves reconstruction quality at reduced radiation dose.",
-    image: denoising,
+    image: pubSeanet,
     href: "https://link.springer.com/chapter/10.1007/978-3-031-78198-8_29",
   },
   {
@@ -120,8 +120,8 @@ export const publications: Publication[] = [
     venue: "IEEE EMBC 2024",
     summary:
       "Segmentation networks spend much of their capacity on background that does not matter clinically. PAM-UNet shifts attention onto the region of interest, concentrating representational effort where the anatomy or pathology actually lies. It improves segmentation of small and low-contrast structures while remaining a lightweight U-Net variant.",
-    image: segmentationAttention,
-    href: "https://ieeexplore.ieee.org/abstract/document/10782226/",
+    image: pubPamUnet,
+    href: "https://arxiv.org/abs/2405.01503",
   },
   {
     title:
@@ -132,8 +132,8 @@ export const publications: Publication[] = [
     venue: "DDW 2024",
     summary:
       "Sessile serrated polyps are flat, subtle, and among the most frequently missed lesions during colonoscopy. DAPoDet detects them in real time on live endoscopic video, running fast enough to sit inside the clinical workflow rather than beside it. The study reports detection performance in a setting that reflects how endoscopists actually work.",
-    image: realtime,
-    href: "https://www.giejournal.org/article/S0016-5107(24)00898-8/abstract",
+    image: pubDapodet,
+    href: "https://www.giejournal.org/article/S0016-5107(24)00898-8/fulltext",
   },
 ];
 

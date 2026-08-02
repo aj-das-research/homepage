@@ -53,6 +53,10 @@ Projects are defined in `src/data/projects.ts` with `status: "active" | "closed"
 
 Edit `abstract` on each project object to add the long-form write-up.
 
+### Publications images
+
+Listing teaser figures live as `src/assets/media/pub-*.jpg` (paper architecture/result figures with white padding, 16:9). Sourced from arXiv, Springer chapter PDFs, Frontiers, and GIE.
+
 ### Blog
 
 Posts live in `src/data/posts.ts`.

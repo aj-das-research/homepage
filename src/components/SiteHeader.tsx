@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -19,21 +20,24 @@ export function SiteHeader() {
         >
           Abhijit Das
         </Link>
-        <nav aria-label="Primary">
-          <ul className="flex flex-wrap gap-x-5 gap-y-1 text-[17px] text-foreground">
-            {nav.slice(1).map((item) => (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  className="nav-link transition-colors hover:text-primary"
-                  activeProps={{ className: "text-primary" }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <nav aria-label="Primary">
+            <ul className="flex flex-wrap gap-x-5 gap-y-1 text-[17px] text-foreground">
+              {nav.slice(1).map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="nav-link transition-colors hover:text-primary"
+                    activeProps={{ className: "text-primary" }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

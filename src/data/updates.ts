@@ -9,11 +9,12 @@ export type Update = {
 // Newest first. Only the 5 most recent are shown on the landing page.
 export const updates: Update[] = [
   {
-    date: "2026-07-31",
-    text: "Started my PhD in Machine Learning at MBZUAI.",
+    date: "2026-08-18",
+    text: "Joining MBZUAI for a PhD in Machine Learning.",
     href: "https://mbzuai.ac.ae/",
     linkLabel: "MBZUAI",
   },
+
   {
     date: "2026-07-15",
     text: "Four papers accepted at MICCAI 2026 on OOD adaptation, hallucination mitigation in VLMs, medical image re-identification, and active visual prompting for foundation models.",
