@@ -10,13 +10,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Abhijit Das is a PhD student at MBZUAI working on trustworthy medical vision-language models, conformal prediction, and efficient deep learning.",
+          "Abhijit Das is a PhD student at MBZUAI working on scientific foundation models, autonomous discovery for personalized medicine, AI for AI, and scalable inference.",
       },
       { property: "og:title", content: "Abhijit Das — Machine Learning Researcher, MBZUAI" },
       {
         property: "og:description",
         content:
-          "Research on faithful multimodal reasoning, uncertainty and risk control, and real-time inference for clinical AI.",
+          "Research on scientific foundation models and world models, autonomous discovery for personalized medicine, alignment and interpretability, and AI scalability.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -66,9 +66,17 @@ function formatUpdate(date: string) {
 }
 
 function renderLinkedText(text: string) {
-  if (!text.includes("available here") && !text.includes(profile.email)) return text;
-  const parts = text.split(/(available here|\S+@\S+?\.ae)/g);
+  const parts = text.split(
+    /(open to internships and visiting researcher positions|available here|\S+@\S+?\.ae)/g,
+  );
   return parts.map((part, i) => {
+    if (part === "open to internships and visiting researcher positions") {
+      return (
+        <strong key={i} className="font-semibold text-foreground">
+          {part}
+        </strong>
+      );
+    }
     if (part === "available here") {
       return (
         <a key={i} href={profile.cvUrl} target="_blank" rel="noreferrer">
@@ -113,7 +121,7 @@ function Home() {
   return (
     <main>
       <section className="rise-in mx-auto w-full max-w-6xl px-6 py-10 md:py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[240px_minmax(0,1fr)] md:gap-12">
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[240px_minmax(0,1fr)] md:gap-12">
           {/* Left column: photo + designations + icon links */}
           <div className="space-y-4">
             <div className="media-hover aspect-[3/4] w-full max-w-[240px] overflow-hidden border border-border bg-card">
@@ -158,14 +166,14 @@ function Home() {
           </div>
 
           {/* Right column: three compact bio sections */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <section>
-              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+              <h2 className="m-0 font-serif text-lg font-bold leading-none text-accent sm:text-xl">
                 About Me
               </h2>
-              <div className="mt-2.5 space-y-2.5">
+              <div className="mt-1 space-y-1.5">
                 {profile.homeBio.about.map((para) => (
-                  <p key={para.slice(0, 32)} className="prose-justify text-foreground/90">
+                  <p key={para.slice(0, 32)} className="prose-justify leading-snug text-foreground/90">
                     {renderLinkedText(para)}
                   </p>
                 ))}
@@ -173,23 +181,28 @@ function Home() {
             </section>
 
             <section>
-              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+              <h2 className="m-0 font-serif text-lg font-bold leading-none text-accent sm:text-xl">
                 Research Interests
               </h2>
-              <ol className="mt-2.5 list-decimal space-y-0 pl-5 leading-tight text-foreground/90 marker:text-foreground">
+              <ol className="mt-1 list-decimal space-y-0.5 pl-5 leading-snug text-foreground/90 marker:text-foreground">
                 {profile.homeBio.researchInterests.map((item) => (
-                  <li key={item} className="pl-1">
-                    {item}
+                  <li key={item.title} className="pl-1">
+                    <span className="font-semibold text-foreground">
+                      {item.title}
+                    </span>{" "}
+                    <span className="text-muted-foreground">
+                      ({item.detail}.)
+                    </span>
                   </li>
                 ))}
               </ol>
             </section>
 
             <section>
-              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+              <h2 className="m-0 font-serif text-lg font-bold leading-none text-accent sm:text-xl">
                 What I See AI Do in Medicine in the Next 5 Years
               </h2>
-              <p className="prose-justify mt-2.5 text-foreground/90">
+              <p className="prose-justify mt-1 leading-snug text-foreground/90">
                 {profile.homeBio.medicineVision}
               </p>
             </section>

@@ -6,29 +6,44 @@ export const profile = {
   role: "PhD in Machine Learning, MBZUAI",
   secondaryRole: "CTO, MedOS Limited",
   location: "MBZUAI, UAE",
-  headline: "I build trustworthy, efficient AI systems for clinical medicine.",
+  headline: "I build scientific foundation models and agentic systems for personalized medicine.",
   heroSummary:
-    "Machine learning researcher working on faithful multimodal reasoning, uncertainty and risk control, and real-time clinical AI.",
+    "Machine learning researcher working on scientific foundation models, autonomous discovery for personalized medicine, AI alignment and interpretability, and scalable inference.",
   summary:
-    "PhD student and AI research engineer working on trustworthy medical vision-language models, uncertainty and risk control, and efficient deep learning for deployment on resource-constrained hardware.",
+    "PhD student and AI research engineer working on scientific foundation models and world models, autonomous discovery for personalized medicine, AI for AI (alignment, safety, interpretability), and scalable edge inference.",
   /** Compact three-part copy for the homepage About column. */
   homeBio: {
     about: [
-      "I am a PhD student in Machine Learning at MBZUAI and CTO of MedOS Limited, based in Abu Dhabi. My path into this work grew from a simple conviction: if AI is to matter in medicine, it must earn trust where the cost of being wrong is highest. That belief has shaped how I study, build, and lead.",
-      "My work focuses on making foundation models trustworthy for clinical care \u2014 faithful multimodal reasoning, uncertainty and risk control, and the engineering that lets these systems run inside real hospital workflows. CV available here.",
+      "I am a PhD student in Machine Learning at MBZUAI and CTO of MedOS Limited, based in Abu Dhabi. My path into this work grew from a simple conviction: if AI is to matter in science and medicine, it must earn trust where the cost of being wrong is highest. That belief shapes how I study, build, and lead. I am open to internships and visiting researcher positions \u2014 please reach out. My CV is available here.",
     ],
     researchInterests: [
-      "Faithful multimodal reasoning and hallucination mitigation",
-      "Uncertainty, conformal risk control, and OOD detection",
-      "Efficient, real-time clinical AI systems",
+      {
+        title: "Scientific Foundation Models and World Models",
+        detail:
+          "pretraining, post-training, causal RL, visual CoT, test-time adaptation for multimodal LLMs, and diffusion models",
+      },
+      {
+        title: "Autonomous Scientific Discovery for Personalized Medicine",
+        detail:
+          "self-evolving agents for drug discovery, wellness, and vitality",
+      },
+      {
+        title: "AI for AI",
+        detail: "alignment, safety, and mechanistic interpretability",
+      },
+      {
+        title: "AI Scalability",
+        detail:
+          "inference optimization, edge AI models, agent-native memory, and knowledge distillation",
+      },
     ],
     medicineVision:
-      "In the next five years, AI in medicine will move from demos to dependable clinical tools: models that know when they are unsure, fuse imaging and text without inventing evidence, and run fast enough for live workflows. The winners will be systems clinicians can trust under shift \u2014 not just ones that look good on a benchmark.",
+      "In the next five years, AI in medicine will shift from narrow predictors to scientific partners: foundation and world models that simulate biology, agents that propose and refine personalized interventions for drug discovery and wellness, and systems that remain aligned, interpretable, and fast enough for the edge of care. The winners will not be the largest models \u2014 they will be the ones clinicians and scientists can trust to discover, explain, and act under real constraints.",
   },
   longBio: [
     "I am a PhD student and AI Research Engineer based in the UAE, with three years of experience developing and deploying computer-vision, multimodal, and real-time inference systems. I have built vision pipelines operating at 76 FPS, sub-second streaming ASR systems, and scalable model-serving infrastructure using PyTorch, C++, Docker, and cloud platforms.",
-    "My research centres on making foundation models trustworthy where the cost of being wrong is highest \u2014 clinical medicine. That means faithful multimodal reasoning and hallucination mitigation, conformal prediction and risk control, test-time and out-of-distribution adaptation, and the mechanistic interpretability needed to understand why a model behaves as it does.",
-    "Alongside research, I care about the engineering that makes it real: quantization, distillation, mixed-precision inference, and hardware-aware optimization that let these systems run inside actual clinical environments.",
+    "My research centres on scientific foundation models and world models, autonomous agents for personalized medicine, AI for AI (alignment, safety, and mechanistic interpretability), and the scalability stack that lets these systems run at the edge of care.",
+    "Alongside research, I care about the engineering that makes it real: inference optimization, knowledge distillation, agent-native memory, and hardware-aware deployment inside clinical and discovery workflows.",
     "I welcome opportunities in academia and research labs \u2014 including full-time roles, visiting fellowships, and internships. A copy of my CV is available here.",
     "You can reach me at abhijit.das@mbzuai.ac.ae.",
   ],
@@ -47,19 +62,23 @@ export const profile = {
   },
   researchAreas: [
     {
-      title: "Faithful multimodal reasoning",
+      title: "Scientific Foundation Models and World Models",
       description:
-        "Designing models that align evidence from text, images, and signals to support trustworthy clinical decisions.",
+        "Pretraining, post-training, causal RL, visual CoT, test-time adaptation for multimodal LLMs, and diffusion models.",
     },
     {
-      title: "Risk-aware deployment",
+      title: "Autonomous Scientific Discovery for Personalized Medicine",
       description:
-        "Quantifying uncertainty, detecting distribution shift, and controlling risk across real clinical workflows.",
+        "Self-evolving agents for drug discovery, wellness, and vitality.",
     },
     {
-      title: "Efficient clinical systems",
+      title: "AI for AI",
+      description: "Alignment, safety, and mechanistic interpretability.",
+    },
+    {
+      title: "AI Scalability",
       description:
-        "Building accurate models that are fast, resource-efficient, and dependable at the point of care.",
+        "Inference optimization, edge AI models, agent-native memory, and knowledge distillation.",
     },
   ],
 };
