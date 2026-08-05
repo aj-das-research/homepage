@@ -26,9 +26,7 @@ export const Route = createFileRoute("/about")({
 
 function SectionHeading({ children }: { children: string }) {
   return (
-    <h2 className="border-b border-border pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
-      {children}
-    </h2>
+    <h2 className="ink-mark text-label text-accent">{children}</h2>
   );
 }
 
@@ -48,7 +46,7 @@ function About() {
         <ul className="mt-5 space-y-6">
           {education.map((item) => (
             <li key={item.school}>
-              <h3 className="font-serif text-xl leading-snug text-foreground">
+              <h3 className="font-serif text-xl text-foreground">
                 {item.school}
               </h3>
               <p className="text-meta text-muted-foreground">
@@ -72,7 +70,7 @@ function About() {
         <ul className="mt-5 space-y-7">
           {experience.map((job) => (
             <li key={`${job.org}-${job.period}`}>
-              <h3 className="font-serif text-xl leading-snug text-foreground">{job.org}</h3>
+              <h3 className="font-serif text-xl text-foreground">{job.org}</h3>
               <p className="italic text-foreground">{job.role}</p>
               <p className="text-meta text-muted-foreground">
                 {job.place} · {job.period}

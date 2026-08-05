@@ -5,12 +5,26 @@ export const profile = {
   name: "Abhijit Das",
   role: "PhD in Machine Learning, MBZUAI",
   secondaryRole: "CTO, MedOS Limited",
-  location: "Abu Dhabi, UAE",
+  location: "MBZUAI, UAE",
   headline: "I build trustworthy, efficient AI systems for clinical medicine.",
   heroSummary:
     "Machine learning researcher working on faithful multimodal reasoning, uncertainty and risk control, and real-time clinical AI.",
   summary:
     "PhD student and AI research engineer working on trustworthy medical vision-language models, uncertainty and risk control, and efficient deep learning for deployment on resource-constrained hardware.",
+  /** Compact three-part copy for the homepage About column. */
+  homeBio: {
+    about: [
+      "I am a PhD student in Machine Learning at MBZUAI and CTO of MedOS Limited, based in Abu Dhabi. My path into this work grew from a simple conviction: if AI is to matter in medicine, it must earn trust where the cost of being wrong is highest. That belief has shaped how I study, build, and lead.",
+      "My work focuses on making foundation models trustworthy for clinical care \u2014 faithful multimodal reasoning, uncertainty and risk control, and the engineering that lets these systems run inside real hospital workflows. CV available here.",
+    ],
+    researchInterests: [
+      "Faithful multimodal reasoning and hallucination mitigation",
+      "Uncertainty, conformal risk control, and OOD detection",
+      "Efficient, real-time clinical AI systems",
+    ],
+    medicineVision:
+      "In the next five years, AI in medicine will move from demos to dependable clinical tools: models that know when they are unsure, fuse imaging and text without inventing evidence, and run fast enough for live workflows. The winners will be systems clinicians can trust under shift \u2014 not just ones that look good on a benchmark.",
+  },
   longBio: [
     "I am a PhD student and AI Research Engineer based in the UAE, with three years of experience developing and deploying computer-vision, multimodal, and real-time inference systems. I have built vision pipelines operating at 76 FPS, sub-second streaming ASR systems, and scalable model-serving infrastructure using PyTorch, C++, Docker, and cloud platforms.",
     "My research centres on making foundation models trustworthy where the cost of being wrong is highest \u2014 clinical medicine. That means faithful multimodal reasoning and hallucination mitigation, conformal prediction and risk control, test-time and out-of-distribution adaptation, and the mechanistic interpretability needed to understand why a model behaves as it does.",

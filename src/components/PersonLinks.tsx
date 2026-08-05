@@ -7,7 +7,7 @@ type PersonLinksProps = {
 };
 
 const iconClass =
-  "inline-flex h-8 w-8 items-center justify-center text-primary transition-colors hover:text-accent";
+  "inline-flex h-8 w-8 items-center justify-center";
 
 export function PersonLinks({ website, scholar, linkedin }: PersonLinksProps) {
   if (!website && !scholar && !linkedin) return null;

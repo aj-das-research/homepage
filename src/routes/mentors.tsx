@@ -45,7 +45,7 @@ function PersonGrid({
         <li key={person.name} className="flex items-start gap-4">
           <PersonPhoto src={person.image} name={person.name} size={photoSize} />
           <div>
-            <h3 className="font-serif text-xl leading-snug text-foreground">
+            <h3 className="font-serif text-xl text-foreground">
               {person.website ? (
                 <a href={person.website} target="_blank" rel="noreferrer">
                   {person.name}
@@ -54,7 +54,7 @@ function PersonGrid({
                 person.name
               )}
             </h3>
-            <div className="text-meta mt-0.5 space-y-0 text-foreground leading-snug">
+            <div className="text-meta mt-0.5 space-y-0 text-foreground">
               {person.roles.map((role) => (
                 <p key={role.title}>
                   {role.href ? (
@@ -67,7 +67,7 @@ function PersonGrid({
                 </p>
               ))}
             </div>
-            <p className="text-meta leading-snug text-muted-foreground">{person.affiliation}</p>
+            <p className="text-meta text-muted-foreground">{person.affiliation}</p>
             <PersonLinks
               website={person.website}
               scholar={person.scholar}
@@ -90,8 +90,7 @@ function chunkTaperedRows<T>(items: T[], maxPerRow = 6): T[][] {
 }
 
 function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
-  const labelClass =
-    "mt-1.5 text-center font-serif text-[15px] leading-snug";
+  const labelClass = "text-meta mt-1.5 text-center font-serif";
   return (
     <li className="flex w-32 flex-col items-center sm:w-40">
       <div className="relative">
@@ -102,7 +101,7 @@ function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
             target="_blank"
             rel="noreferrer"
             aria-label={`${person.name} on Google Scholar`}
-            className="absolute -right-1 -top-1 z-10 inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-card text-primary shadow-sm transition-colors hover:border-accent hover:text-accent"
+            className="absolute -right-1 -top-1 z-10 inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-colors hover:border-accent"
           >
             <GraduationCap size={14} strokeWidth={2} />
           </a>
@@ -121,7 +120,7 @@ function PeerCollaboratorCard({ person }: { person: PeerCollaborator }) {
         <span className={`${labelClass} text-foreground`}>{person.name}</span>
       )}
       {person.institute ? (
-        <p className="mt-0.5 whitespace-nowrap text-center font-serif text-[12px] leading-snug text-muted-foreground">
+        <p className="text-meta mt-0.5 whitespace-nowrap text-center text-muted-foreground">
           {person.institute}
         </p>
       ) : null}
@@ -155,7 +154,7 @@ function MentorsPage() {
           >
             “
           </span>
-          <p className="font-serif text-lg leading-snug text-foreground sm:text-xl">
+          <p className="font-serif text-xl text-foreground">
             My journey so far is dedicated to those who shaped my path.{" "}
             <a
               href="https://www.linkedin.com/in/debayan-ganguly-2442931b/"
@@ -188,18 +187,14 @@ function MentorsPage() {
       </figure>
 
       <section>
-        <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
-          Supervisor
-        </h2>
+        <h2 className="ink-mark text-label text-accent">Supervisor</h2>
         <div className="mt-5">
           <PersonGrid people={supervisors} photoSize="lg" />
         </div>
       </section>
 
       <section className="mt-10">
-        <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
-          Mentors
-        </h2>
+        <h2 className="ink-mark text-label text-accent">Mentors</h2>
         <div className="mt-5">
           <PersonGrid people={mentors} />
         </div>
@@ -207,9 +202,7 @@ function MentorsPage() {
 
       {peerCollaborators.length > 0 ? (
         <section className="mt-10">
-          <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
-            Collaborators
-          </h2>
+          <h2 className="ink-mark text-label text-accent">Collaborators</h2>
           <div className="mt-5">
             <PeerCollaboratorGrid people={peerCollaborators} />
           </div>
@@ -217,9 +210,7 @@ function MentorsPage() {
       ) : null}
 
       <section className="mt-10">
-        <h2 className="font-serif text-[15px] uppercase tracking-[0.18em] text-muted-foreground">
-          Endorsements
-        </h2>
+        <h2 className="ink-mark text-label text-accent">Endorsements</h2>
         <div className="mt-5">
           <EndorsementCarousel items={endorsements} />
         </div>

@@ -5,7 +5,9 @@ import { AuthorList } from "@/components/AuthorList";
 import { MediaThumb } from "@/components/MediaThumb";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { publications, patents } from "@/data/publications";
+import { upcomingPresentations } from "@/data/conference-map";
 import { profile } from "@/data/profile";
+import { ConferenceMap } from "@/components/ConferenceMap";
 
 export const Route = createFileRoute("/publications")({
   head: () => ({
@@ -42,42 +44,69 @@ function Publications() {
   const indexBySrc = new Map(publicationImages.map((img, i) => [img.src, i]));
 
   return (
-    <PageLayout
-      title="Publications"
-      intro={
-        <>
-          For the published papers and preprints please visit my{" "}
-          <a href={profile.scholar} target="_blank" rel="noreferrer">
-            Google Scholar
-          </a>
-          .
-        </>
-      }
-    >
+    <PageLayout>
+      <header className="mb-7 grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:gap-8">
+        <div>
+          <h1 className="page-title font-serif text-3xl text-foreground sm:text-4xl">
+            Publications
+          </h1>
+          <p className="prose-justify mt-3 max-w-lg text-muted-foreground">
+            For the published papers and preprints please visit my{" "}
+            <a href={profile.scholar} target="_blank" rel="noreferrer">
+              Google Scholar
+            </a>
+            .
+          </p>
+          <ul className="mt-4 max-w-lg space-y-1.5 text-sm leading-snug text-muted-foreground">
+            {upcomingPresentations.map((talk) => {
+              const paperWord = talk.count === 1 ? "paper" : "papers";
+              const conference = talk.href ? (
+                <a
+                  href={talk.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-upcoming font-semibold"
+                >
+                  {talk.conference}
+                </a>
+              ) : (
+                <span className="font-semibold text-upcoming">{talk.conference}</span>
+              );
+              return (
+                <li key={`${talk.conference}-${talk.year}`}>
+                  Presenting {talk.count} {paperWord} at {conference} on{" "}
+                  {talk.dates} at {talk.city}.
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="lg:pt-1">
+          <ConferenceMap />
+        </div>
+      </header>
+
       {years.map((year) => {
         const items = publications.filter((p) => p.year === year);
         if (items.length === 0) return null;
         return (
-          <section key={year} className="mt-10">
-            <h2 className="pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
-              {year}
-            </h2>
-            <ol className="mt-5 space-y-6">
+          <section key={year} className="mt-6">
+            <h2 className="ink-mark text-label text-accent">{year}</h2>
+            <ol className="mt-2.5 space-y-2.5">
               {items.map((pub) => (
-                <li key={pub.title} className="flex flex-col gap-3 sm:flex-row sm:gap-5">
+                <li key={pub.title} className="flex flex-row items-start gap-3">
                   <MediaThumb
                     src={pub.image}
                     alt={pub.title}
-                    caption={pub.venue}
-                    captionHref={pub.href}
+                    size="sm"
                     onOpen={
                       pub.image && indexBySrc.has(pub.image)
                         ? () => setActiveIndex(indexBySrc.get(pub.image!)!)
                         : undefined
                     }
                   />
-                  <div className="min-w-0">
-                    <h3 className="font-serif text-xl leading-snug text-foreground">
+                  <div className="min-w-0 leading-tight">
+                    <h3 className="font-normal text-foreground">
                       {pub.href ? (
                         <a href={pub.href} target="_blank" rel="noreferrer">
                           {pub.title}
@@ -87,9 +116,7 @@ function Publications() {
                       )}
                     </h3>
                     <AuthorList authors={pub.authors} />
-                    <p className="prose-justify mt-1.5 text-[16px] leading-snug text-muted-foreground">
-                      {pub.summary}
-                    </p>
+                    <p className="text-meta mt-0.5 italic font-normal text-muted-foreground">{pub.venue}</p>
                   </div>
                 </li>
               ))}
@@ -98,14 +125,12 @@ function Publications() {
         );
       })}
 
-      <section className="mt-10">
-        <h2 className="pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
-          Patents
-        </h2>
-        <ol className="mt-5 space-y-5">
+      <section className="mt-6">
+        <h2 className="ink-mark text-label text-accent">Patents</h2>
+        <ol className="mt-2.5 space-y-2">
           {patents.map((p) => (
-            <li key={p.title}>
-              <h3 className="font-serif text-xl leading-snug text-foreground">{p.title}</h3>
+            <li key={p.title} className="leading-tight">
+              <h3 className="font-normal text-foreground">{p.title}</h3>
               <AuthorList authors={p.authors} />
             </li>
           ))}

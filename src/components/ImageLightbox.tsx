@@ -82,10 +82,10 @@ export function ImageLightbox({
             />
             <div className="max-w-[min(92vw,720px)] text-center">
               {active.caption ? (
-                <p className="text-[15px] text-foreground">{active.caption}</p>
+                <p className="text-meta text-foreground">{active.caption}</p>
               ) : null}
               {showNav && activeIndex != null ? (
-                <p className="mt-1 text-[14px] text-muted-foreground">
+                <p className="text-meta mt-1 text-muted-foreground">
                   {activeIndex + 1} / {images.length}
                 </p>
               ) : null}

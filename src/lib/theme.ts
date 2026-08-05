@@ -22,5 +22,5 @@ export function applyTheme(theme: Theme) {
   }
 }
 
-/** Inline boot script keeps the first paint aligned with a saved or OS theme. */
-export const themeBootScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);}catch(e){document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);}})();`;
+/** Force light mode for now (dark toggle is disabled). */
+export const themeBootScript = `(function(){try{document.documentElement.classList.remove("dark");localStorage.setItem(${JSON.stringify(THEME_STORAGE_KEY)},"light");}catch(e){document.documentElement.classList.remove("dark");}})();`;

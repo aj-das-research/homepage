@@ -4,6 +4,7 @@ export function MediaThumb({
   caption,
   captionHref,
   className = "",
+  size = "md",
   onOpen,
 }: {
   src?: string;
@@ -13,10 +14,15 @@ export function MediaThumb({
   /** When set, caption links to the same URL as the paper title. */
   captionHref?: string;
   className?: string;
+  /** Thumbnail width; `sm` is for compact publication rows. */
+  size?: "sm" | "md";
   /** Opens the shared lightbox when the image is clicked. */
   onOpen?: () => void;
 }) {
   if (!src) return null;
+
+  const widthClass =
+    size === "sm" ? "w-20 sm:w-24 md:w-28" : "w-48 sm:w-64 md:w-72";
 
   const figure = (
     <figure
@@ -34,7 +40,7 @@ export function MediaThumb({
   );
 
   return (
-    <div className={`w-48 shrink-0 self-start sm:w-64 md:w-72 ${className}`}>
+    <div className={`${widthClass} shrink-0 self-start ${className}`}>
       {onOpen ? (
         <button
           type="button"
@@ -48,7 +54,7 @@ export function MediaThumb({
         figure
       )}
       {caption ? (
-        <p className="text-meta mt-1.5 italic leading-snug text-accent">
+        <p className="text-meta mt-1.5 italic text-accent">
           {captionHref ? (
             <a href={captionHref} target="_blank" rel="noreferrer">
               {caption}

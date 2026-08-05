@@ -104,7 +104,7 @@ export function EndorsementCarousel({ items }: { items: Endorsement[] }) {
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
-              <p className="text-[14px] text-muted-foreground">
+              <p className="text-meta text-muted-foreground">
                 {active.name}
                 {showNav && activeIndex != null
                   ? ` - ${activeIndex + 1} / ${items.length}`

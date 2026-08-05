@@ -45,7 +45,7 @@ function ProjectDetail() {
 
   return (
     <main className="rise-in mx-auto w-full max-w-[48rem] px-6 py-12 sm:py-16">
-      <p className="mb-8 text-[13px] text-muted-foreground">
+      <p className="text-meta mb-8 text-muted-foreground">
         <Link
           to="/projects"
           className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground"
@@ -56,15 +56,13 @@ function ProjectDetail() {
 
       <article>
         <header className="border-b border-border pb-6 text-center">
-          <p className="mb-3 font-mono text-[12px] uppercase tracking-[0.12em] text-muted-foreground">
+          <p className="text-label mb-3 text-muted-foreground">
             {statusLabel} project
           </p>
-          <h1 className="font-serif text-[1.75rem] leading-snug tracking-tight text-foreground sm:text-[2.1rem]">
+          <h1 className="font-serif text-3xl text-foreground sm:text-4xl">
             {project.title}
           </h1>
-          <p className="mt-4 font-serif text-[15px] text-muted-foreground">
-            Abhijit Das
-          </p>
+          <p className="text-meta mt-4 text-muted-foreground">Abhijit Das</p>
         </header>
 
         {project.image ? (
@@ -79,13 +77,11 @@ function ProjectDetail() {
 
         {abstract.length > 0 ? (
           <section className="mt-8 space-y-4 border-t border-border pt-6">
-            <h2 className="font-serif text-[15px] font-semibold tracking-wide text-foreground">
-              Abstract
-            </h2>
+            <h2 className="text-label text-foreground">Abstract</h2>
             {abstract.map((para) => (
               <p
                 key={para.slice(0, 48)}
-                className="prose-justify font-serif text-[16px] leading-relaxed text-foreground/90"
+                className="prose-justify text-foreground/90"
               >
                 {para}
               </p>

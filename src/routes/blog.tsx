@@ -43,7 +43,7 @@ function Blog() {
       title="Blog"
       intro="Occasional notes on research, methodology, and the engineering that makes models usable."
     >
-      <ul className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {featured.map((post) => {
           const canOpen =
             Boolean(post.image) && indexBySrc.has(post.image!);
@@ -58,7 +58,7 @@ function Blog() {
                   type="button"
                   onClick={canOpen ? () => setActiveIndex(openIndex!) : undefined}
                   aria-label={`View ${post.title}`}
-                  className={`media-hover mb-3 block w-full border-0 bg-transparent p-0 text-left ${
+                  className={`media-hover mb-2 block w-full border-0 bg-transparent p-0 text-left ${
                     canOpen ? "cursor-zoom-in" : ""
                   }`}
                 >
@@ -75,7 +75,7 @@ function Blog() {
               <p className="text-meta text-muted-foreground">
                 {formatPostDate(post.date)}
               </p>
-              <h2 className="mt-1 font-serif text-xl leading-snug text-foreground">
+              <h2 className="mt-1 font-serif text-xl font-bold text-foreground">
                 <Link
                   to="/blog/$slug"
                   params={{ slug: post.slug }}
@@ -84,7 +84,7 @@ function Blog() {
                   {post.title}
                 </Link>
               </h2>
-              <p className="prose-justify mt-1.5 text-[16px] leading-snug text-muted-foreground">
+              <p className="prose-justify text-meta mt-1.5 text-muted-foreground">
                 {post.excerpt}
               </p>
             </li>
@@ -92,7 +92,7 @@ function Blog() {
         })}
       </ul>
 
-      <p className="mt-10 text-[15px]">
+      <p className="text-meta mt-10">
         <Link
           to="/blog/all"
           className="text-accent transition-colors hover:text-foreground"

@@ -42,7 +42,7 @@ function AllBlogs() {
       title="All blogs"
       intro="Full archive of notes on research, methodology, and the engineering that makes models usable."
     >
-      <p className="mb-6 text-[15px] text-muted-foreground">
+      <p className="text-meta mb-6 text-muted-foreground">
         <Link
           to="/blog"
           className="text-accent transition-colors hover:text-foreground"
@@ -70,7 +70,7 @@ function AllBlogs() {
               <p className="text-meta text-muted-foreground">
                 {formatPostDate(post.date)}
               </p>
-              <h2 className="mt-1 font-serif text-xl leading-snug text-foreground">
+              <h2 className="mt-1 font-serif text-xl text-foreground">
                 <Link
                   to="/blog/$slug"
                   params={{ slug: post.slug }}
@@ -79,7 +79,7 @@ function AllBlogs() {
                   {post.title}
                 </Link>
               </h2>
-              <p className="prose-justify mt-1.5 text-[16px] leading-snug text-muted-foreground">
+              <p className="prose-justify mt-1.5 text-muted-foreground">
                 {post.excerpt}
               </p>
             </div>

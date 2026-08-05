@@ -65,9 +65,9 @@ function formatUpdate(date: string) {
   });
 }
 
-function renderBio(para: string) {
-  if (!para.includes("available here") && !para.includes(profile.email)) return para;
-  const parts = para.split(/(available here|\S+@\S+?\.ae)/g);
+function renderLinkedText(text: string) {
+  if (!text.includes("available here") && !text.includes(profile.email)) return text;
+  const parts = text.split(/(available here|\S+@\S+?\.ae)/g);
   return parts.map((part, i) => {
     if (part === "available here") {
       return (
@@ -112,13 +112,11 @@ function renderUpdateText(text: string, href?: string, linkLabel?: string) {
 function Home() {
   return (
     <main>
-      <section className="rise-in mx-auto w-full max-w-6xl px-6 py-12 md:py-16">
-        <h1 className="font-serif text-3xl text-foreground sm:text-4xl">About</h1>
-
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-[280px_1fr] md:gap-12">
+      <section className="rise-in mx-auto w-full max-w-6xl px-6 py-10 md:py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[240px_minmax(0,1fr)] md:gap-12">
           {/* Left column: photo + designations + icon links */}
-          <div className="space-y-5">
-            <div className="media-hover aspect-[3/4] w-full max-w-[260px] overflow-hidden border border-border bg-card">
+          <div className="space-y-4">
+            <div className="media-hover aspect-[3/4] w-full max-w-[240px] overflow-hidden border border-border bg-card">
               <img
                 src={profile.photoUrl}
                 alt={profile.name}
@@ -130,21 +128,20 @@ function Home() {
 
             <div className="space-y-0.5">
               <p className="text-foreground">
-                PhD in Machine Learning,{" "}
+                <span className="font-bold">PhD in Machine Learning</span>,{" "}
                 <a href={profile.mbzuaiUrl} target="_blank" rel="noreferrer">
-                  MBZUAI
+                  MBZUAI, UAE
                 </a>
               </p>
               <p className="text-foreground">
-                CTO,{" "}
+                <span className="font-bold">CTO</span>,{" "}
                 <a href={profile.medosUrl} target="_blank" rel="noreferrer">
                   MedOS Limited
                 </a>
               </p>
-              <p className="text-muted-foreground">{profile.location}</p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               {iconLinks.map(({ href, label, icon: Icon }) => (
                 <a
                   key={label}
@@ -152,49 +149,81 @@ function Home() {
                   target={href.startsWith("mailto") ? undefined : "_blank"}
                   rel={href.startsWith("mailto") ? undefined : "noreferrer"}
                   aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card hover:-translate-y-0.5 hover:border-accent"
                 >
-                  <Icon size={18} strokeWidth={1.75} />
+                  <Icon size={17} strokeWidth={1.75} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right column: about paragraph */}
-          <div className="space-y-3.5">
-            {profile.longBio.map((para) => (
-              <p key={para.slice(0, 32)} className="prose-justify text-muted-foreground">
-                {renderBio(para)}
+          {/* Right column: three compact bio sections */}
+          <div className="space-y-6">
+            <section>
+              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+                About Me
+              </h2>
+              <div className="mt-2.5 space-y-2.5">
+                {profile.homeBio.about.map((para) => (
+                  <p key={para.slice(0, 32)} className="prose-justify text-foreground/90">
+                    {renderLinkedText(para)}
+                  </p>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+                Research Interests
+              </h2>
+              <ol className="mt-2.5 list-decimal space-y-0 pl-5 leading-tight text-foreground/90 marker:text-foreground">
+                {profile.homeBio.researchInterests.map((item) => (
+                  <li key={item} className="pl-1">
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section>
+              <h2 className="font-serif text-lg font-bold text-accent sm:text-xl">
+                What I See AI Do in Medicine in the Next 5 Years
+              </h2>
+              <p className="prose-justify mt-2.5 text-foreground/90">
+                {profile.homeBio.medicineVision}
               </p>
-            ))}
+            </section>
           </div>
         </div>
 
-        <figure className="mt-12 border-t border-border pt-8">
-          <blockquote className="relative mx-auto max-w-2xl px-6 text-center">
+        <figure className="mt-10 pt-2">
+          <blockquote className="relative mx-auto max-w-2xl text-center">
             <span
               aria-hidden
-              className="mb-2 block font-serif text-5xl leading-none text-accent"
+              className="mb-1 block font-serif text-5xl leading-none text-accent"
             >
               “
             </span>
-            <p className="font-serif text-xl leading-snug text-foreground sm:text-2xl">
+            <p className="font-serif text-xl font-bold text-foreground">
               {profile.quote.text}
             </p>
-            <figcaption className="mt-3 text-[15px] tracking-[0.04em] text-muted-foreground">
+            <figcaption className="text-meta mt-3 font-semibold text-accent">
               — {profile.quote.author}
             </figcaption>
           </blockquote>
         </figure>
 
-        <section className="mt-12 border-t border-border pt-8">
-          <h2 className="font-serif text-xl text-foreground">Updates</h2>
-          <ul className="mt-5 space-y-3">
+        <section className="mt-10">
+          <h2 className="ink-mark font-serif text-xl font-bold text-foreground">Updates</h2>
+          <ul className="mt-4 space-y-2.5">
             {latestUpdates.map((item) => (
-              <li key={item.date + item.text} className="flex flex-col gap-0.5 sm:flex-row sm:gap-6">
+              <li
+                key={item.date + item.text}
+                className="flex flex-col gap-0.5 sm:flex-row sm:gap-6"
+              >
                 <time
                   dateTime={item.date}
-                  className="shrink-0 text-[15px] uppercase tracking-[0.08em] text-accent sm:w-40"
+                  className="text-label shrink-0 text-accent sm:w-40"
                 >
                   {formatUpdate(item.date)}
                 </time>

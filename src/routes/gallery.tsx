@@ -32,42 +32,18 @@ function Gallery() {
       intro="Photos from campus, conferences, and research events."
     >
       {gallery.length === 0 ? (
-        <p className="border-t border-border pt-8 text-muted-foreground">
+        <p className="text-muted-foreground">
           No photos yet. Add an album in{" "}
-          <code className="font-mono text-[15px] text-foreground">src/data/gallery.ts</code>.
+          <code className="font-mono text-meta text-foreground">src/data/gallery.ts</code>.
         </p>
       ) : (
-        <div className="space-y-16">
-          {gallery.map((album) => (
-            <section key={album.title}>
-              <header className="mb-6 border-b border-border pb-3">
-                <h2 className="font-serif text-2xl text-foreground">
-                  {album.url ? (
-                    <a href={album.url} target="_blank" rel="noreferrer">
-                      {album.title}
-                    </a>
-                  ) : (
-                    album.title
-                  )}
-                </h2>
-                {(album.location || album.date) && (
-                  <p className="mt-1 text-[15px] text-muted-foreground">
-                    {album.location ? (
-                      album.mapsUrl ? (
-                        <a href={album.mapsUrl} target="_blank" rel="noreferrer">
-                          {album.location}
-                        </a>
-                      ) : (
-                        album.location
-                      )
-                    ) : null}
-                    {album.location && album.date ? " · " : null}
-                    {album.date ?? null}
-                  </p>
-                )}
-              </header>
-              <GalleryMosaic photos={album.photos} title={album.title} />
-            </section>
+        <div className="grid grid-cols-1 gap-6 lg:gap-8">
+          {gallery.map((album, index) => (
+            <GalleryMosaic
+              key={album.title}
+              album={album}
+              layoutIndex={index}
+            />
           ))}
         </div>
       )}

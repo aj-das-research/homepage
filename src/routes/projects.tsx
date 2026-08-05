@@ -35,9 +35,7 @@ const projectImages = projects.flatMap((project) =>
 
 function SectionHeading({ children }: { children: string }) {
   return (
-    <h2 className="border-b border-border pb-2 font-serif text-sm uppercase tracking-[0.14em] text-muted-foreground">
-      {children}
-    </h2>
+    <h2 className="ink-mark text-label text-accent">{children}</h2>
   );
 }
 
@@ -51,7 +49,7 @@ function ProjectList({
   onOpen: (index: number) => void;
 }) {
   return (
-    <ul className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((project) => {
         const canOpen =
           Boolean(project.image) && indexBySrc.has(project.image!);
@@ -66,7 +64,7 @@ function ProjectList({
                 type="button"
                 onClick={canOpen ? () => onOpen(openIndex!) : undefined}
                 aria-label={`View ${project.title}`}
-                className={`media-hover mb-3 block w-full border-0 bg-transparent p-0 text-left ${
+                className={`media-hover mb-2 block w-full border-0 bg-transparent p-0 text-left ${
                   canOpen ? "cursor-zoom-in" : ""
                 }`}
               >
@@ -80,7 +78,7 @@ function ProjectList({
                 </figure>
               </button>
             ) : null}
-            <h3 className="font-serif text-xl leading-snug text-foreground">
+            <h3 className="font-serif text-xl font-bold text-foreground">
               <Link
                 to="/projects/$slug"
                 params={{ slug: project.slug }}
@@ -89,7 +87,7 @@ function ProjectList({
                 {project.title}
               </Link>
             </h3>
-            <p className="prose-justify mt-2 text-[16px] leading-snug text-muted-foreground">
+            <p className="prose-justify mt-1.5 text-meta text-muted-foreground">
               {project.summary}
             </p>
           </li>

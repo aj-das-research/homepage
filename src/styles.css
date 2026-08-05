@@ -5,8 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fira Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  /* Stylish Times-lineage face (ICLR uses Times; this is the refined web upgrade). */
+  --font-sans: "Source Serif 4", "Times New Roman", Times, ui-serif, serif;
+  --font-serif: "Source Serif 4", "Times New Roman", Times, ui-serif, serif;
+
+  /* Shared type scale — keep sizes and leading consistent across pages. */
+  --text-base: 1.0625rem; /* 17px */
+  --text-sm: 0.9375rem; /* 15px — meta / secondary */
+  --text-xs: 0.8125rem; /* 13px — section labels */
+  --text-xl: 1.25rem; /* 20px — card / item titles */
+  --text-3xl: 1.875rem; /* 30px — page titles */
+  --text-4xl: 2.25rem; /* 36px — page titles (sm+) */
+  --leading-tight: 1.2;
+  --leading-snug: 1.25;
+  --leading-normal: 1.25;
+  --leading-relaxed: 1.25;
 }
 
 /*
@@ -45,6 +58,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-upcoming: var(--upcoming);
+  --color-upcoming-foreground: var(--upcoming-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -81,8 +96,12 @@
   --secondary-foreground: #1a1c20;
   --muted: #ebe9e4;
   --muted-foreground: #4a5058;
-  --accent: #b7791f;
-  --accent-foreground: #1a1c20;
+  /* Single maroon for headings, links, marks — same token everywhere. */
+  --accent: #a0182d;
+  --accent-foreground: #f5f4f1;
+  /* Upcoming conference markers (map pins + labels). */
+  --upcoming: #2f8f4e;
+  --upcoming-foreground: #f5f4f1;
   --destructive: #c53d3d;
   --destructive-foreground: #f5f4f1;
   --border: rgba(26, 28, 32, 0.14);
@@ -90,7 +109,7 @@
   --ring: #2563a8;
   --chart-1: #2563a8;
   --chart-2: #2f8f4e;
-  --chart-3: #b7791f;
+  --chart-3: #a0182d;
   --chart-4: #7c5cbf;
   --chart-5: #1f8a96;
   --sidebar: #ebe9e4;
@@ -117,8 +136,10 @@
   --secondary-foreground: #f5f7fa;
   --muted: #262b34;
   --muted-foreground: #e3e8ef;
-  --accent: #ffc46b;
+  --accent: #b83b4d;
   --accent-foreground: #16181d;
+  --upcoming: #3fa866;
+  --upcoming-foreground: #16181d;
   --destructive: #ff7b72;
   --destructive-foreground: #16181d;
   --border: rgba(255, 255, 255, 0.14);
@@ -126,7 +147,7 @@
   --ring: #79c0ff;
   --chart-1: #79c0ff;
   --chart-2: #7ee787;
-  --chart-3: #ffb454;
+  --chart-3: #b83b4d;
   --chart-4: #d2a8ff;
   --chart-5: #56d4dd;
   --sidebar: #1d2027;
@@ -147,13 +168,25 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(
+        1200px 520px at 8% -8%,
+        color-mix(in oklab, var(--color-primary) 8%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 420px at 100% 0%,
+        color-mix(in oklab, var(--color-accent) 7%, transparent),
+        transparent 55%
+      );
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    font-size: 17px;
+    font-size: var(--text-base);
     font-weight: 400;
-    line-height: 1.55;
-    letter-spacing: 0.01em;
+    line-height: var(--leading-normal);
+    letter-spacing: 0;
   }
 
   h1,
@@ -163,8 +196,19 @@
   h5,
   h6 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+
+  p {
+    line-height: var(--leading-normal);
   }
 
   code,
@@ -182,14 +226,89 @@
     overflow: auto;
   }
 
-  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"])) {
-    color: var(--color-primary);
-    text-decoration-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
+  /*
+   * Text links: solid maroon at rest (same as headings).
+   * Hover reveals a soft maroon shimmer (lightened accent), not gold.
+   */
+  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):not(
+      :has(svg)
+    ) {
+    background-image: linear-gradient(
+      105deg,
+      var(--accent) 0%,
+      var(--accent) 28%,
+      color-mix(in oklab, var(--accent) 40%, white) 50%,
+      var(--accent) 72%,
+      var(--accent) 100%
+    );
+    background-size: 220% 100%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--accent);
+    /* Solid fill hides the gradient until hover — avoids transparent/black flash. */
+    -webkit-text-fill-color: var(--accent);
+    text-decoration-color: color-mix(in oklab, var(--accent) 55%, transparent);
+    transition:
+      background-position 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      -webkit-text-fill-color 0.12s ease,
+      text-decoration-color 0.35s ease;
   }
 
-  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"])):hover {
-    color: var(--color-accent);
-    text-decoration-color: color-mix(in oklab, var(--color-accent) 55%, transparent);
+  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):not(
+      :has(svg)
+    ):hover {
+    -webkit-text-fill-color: transparent;
+    background-position: 0% 50%;
+    text-decoration-color: color-mix(in oklab, var(--accent) 70%, transparent);
+  }
+
+  /* Upcoming conference links: green, no maroon shimmer. */
+  a.link-upcoming {
+    background-image: none;
+    color: var(--upcoming);
+    -webkit-text-fill-color: var(--upcoming);
+    text-decoration-color: color-mix(in oklab, var(--upcoming) 55%, transparent);
+  }
+
+  a.link-upcoming:hover {
+    color: color-mix(in oklab, var(--upcoming) 75%, black);
+    -webkit-text-fill-color: color-mix(in oklab, var(--upcoming) 75%, black);
+    text-decoration-color: color-mix(in oklab, var(--upcoming) 70%, transparent);
+  }
+
+  /* Icon links: solid maroon; soft lightened maroon on hover. */
+  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):has(
+      svg
+    ) {
+    color: var(--accent);
+    -webkit-text-fill-color: var(--accent);
+    transition: color 0.35s ease, -webkit-text-fill-color 0.35s ease, border-color 0.35s ease;
+  }
+
+  a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):has(
+      svg
+    ):hover {
+    color: color-mix(in oklab, var(--accent) 55%, white);
+    -webkit-text-fill-color: color-mix(in oklab, var(--accent) 55%, white);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):not(
+        :has(svg)
+      ) {
+      background-image: none;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+    }
+
+    a:where(:not([class*="bg-"]):not([class*="text-primary-foreground"]):not(.link-upcoming)):not(
+        :has(svg)
+      ):hover {
+      -webkit-text-fill-color: color-mix(in oklab, var(--accent) 55%, white);
+      color: color-mix(in oklab, var(--accent) 55%, white);
+    }
   }
 }
 
@@ -205,7 +324,63 @@
 
 /* Secondary labels: authors, venues, dates, affiliations (body is 17px). */
 @utility text-meta {
-  font-size: 15px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+/* Compact section labels (Years, Active, Patents, …). */
+@utility text-label {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: var(--leading-normal);
+  letter-spacing: 0;
+}
+
+/* Short accent mark under page titles — one restrained cue. */
+@utility page-title {
+  position: relative;
+  font-weight: 700;
+  padding-bottom: 0.55rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.75rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent) 0%,
+      color-mix(in oklab, var(--color-accent) 35%, transparent) 70%,
+      transparent 100%
+    );
+  }
+}
+
+/* Fine underline for section headings — short, not full-bleed. */
+@utility ink-mark {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2rem;
+    height: 1.5px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent) 0%,
+      color-mix(in oklab, var(--color-accent) 40%, transparent) 65%,
+      transparent 100%
+    );
+  }
 }
 
 @keyframes rise-in {
@@ -253,7 +428,12 @@
     bottom: -3px;
     height: 1px;
     width: 100%;
-    background: currentColor;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent) 0%,
+      color-mix(in oklab, var(--color-accent) 45%, transparent) 75%,
+      transparent 100%
+    );
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -281,10 +461,16 @@
     border-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
   }
 
-  a,
   button {
     transition:
       color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  a {
+    transition:
       background-color 0.2s ease,
       border-color 0.2s ease,
       transform 0.2s ease;

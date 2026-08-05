@@ -23,7 +23,7 @@ export function ThemeToggle() {
         applyTheme(next);
         setTheme(next);
       }}
-      className="inline-flex h-8 w-8 items-center justify-center text-foreground transition-colors hover:text-primary"
+      className="inline-flex h-8 w-8 items-center justify-center text-foreground transition-colors hover:text-accent"
       aria-label={next === "light" ? "Switch to light mode" : "Switch to dark mode"}
       title={next === "light" ? "Light mode" : "Dark mode"}
     >
