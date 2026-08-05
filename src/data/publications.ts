@@ -21,6 +21,8 @@ export type Publication = {
   image: string;
   /** Paper / preprint / publisher URL for the title link. */
   href?: string;
+  /** Curated for the homepage rather than inferred from array order. */
+  featured?: boolean;
 };
 
 export const publications: Publication[] = [
@@ -34,6 +36,7 @@ export const publications: Publication[] = [
       "When imaging modalities disagree, most fusion models silently average the conflict away. EnTrust models inter-modal conflict explicitly as a first-class signal, letting the network express how much each modality can be trusted for a given case. This yields calibrated predictions and an interpretable account of where and why the modalities diverge.",
     image: pubEntrust,
     href: "https://arxiv.org/abs/2606.21384",
+    featured: true,
   },
   {
     title: "PROTON: Prototype-Based Test-Time Online OOD Detection for Medical VLMs",
@@ -45,6 +48,7 @@ export const publications: Publication[] = [
       "Deployed medical models constantly meet cases outside their training distribution. PROTON maintains prototype representations that adapt online at test time, flagging out-of-distribution inputs as they arrive rather than after a batch has been processed. It gives clinical vision-language systems a lightweight guardrail that needs no access to the original training data.",
     image: pubProton,
     href: "https://arxiv.org/abs/2606.20913",
+    featured: true,
   },
   {
     title:
@@ -56,6 +60,7 @@ export const publications: Publication[] = [
       "Re-identifying the same patient across scans requires reasoning about what changed and what did not. This work represents differences between studies as a graph structured by anatomy, aligning corresponding regions before comparing them. The anatomical structure makes matching robust to acquisition changes while keeping the comparison interpretable region by region.",
     image: pubGraphDiff,
     href: "https://arxiv.org/abs/2606.21368",
+    featured: true,
   },
   {
     title:

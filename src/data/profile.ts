@@ -6,6 +6,9 @@ export const profile = {
   role: "PhD in Machine Learning, MBZUAI",
   secondaryRole: "CTO, MedOS Limited",
   location: "Abu Dhabi, UAE",
+  headline: "I build trustworthy, efficient AI systems for clinical medicine.",
+  heroSummary:
+    "Machine learning researcher working on faithful multimodal reasoning, uncertainty and risk control, and real-time clinical AI.",
   summary:
     "PhD student and AI research engineer working on trustworthy medical vision-language models, uncertainty and risk control, and efficient deep learning for deployment on resource-constrained hardware.",
   longBio: [
@@ -28,7 +31,23 @@ export const profile = {
     text: "All models are wrong, but some are useful.",
     author: "George Box",
   },
-
+  researchAreas: [
+    {
+      title: "Faithful multimodal reasoning",
+      description:
+        "Designing models that align evidence from text, images, and signals to support trustworthy clinical decisions.",
+    },
+    {
+      title: "Risk-aware deployment",
+      description:
+        "Quantifying uncertainty, detecting distribution shift, and controlling risk across real clinical workflows.",
+    },
+    {
+      title: "Efficient clinical systems",
+      description:
+        "Building accurate models that are fast, resource-efficient, and dependable at the point of care.",
+    },
+  ],
 };
 
 export const currently = [

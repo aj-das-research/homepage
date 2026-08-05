@@ -15,6 +15,7 @@ export type Post = {
    * Leave empty until you are ready to write it.
    */
   body?: string[];
+  status: "draft" | "published";
 };
 
 export function formatPostDate(iso: string) {
@@ -33,6 +34,7 @@ export const posts: Post[] = [
     excerpt:
       "Placeholder note on probing vision–language representations — what lights up inside the model, and how far that is from a clinical explanation you can trust.",
     image: interpretability,
+    status: "draft",
   },
   {
     slug: "conformal-prediction-in-the-clinic",
@@ -41,6 +43,7 @@ export const posts: Post[] = [
     excerpt:
       "Why coverage guarantees change what a model is allowed to say, and what breaks when the exchangeability assumption quietly fails on hospital data.",
     image: uncertainty,
+    status: "draft",
   },
 
   {
@@ -50,6 +53,7 @@ export const posts: Post[] = [
     excerpt:
       "Notes from PCCD and CAST on how much fabricated content you can remove at decoding time before you have to touch the weights.",
     image: decoding,
+    status: "draft",
   },
   {
     slug: "76-fps-notes",
@@ -58,9 +62,13 @@ export const posts: Post[] = [
     excerpt:
       "Quantization, operator fusion, and the unglamorous profiling work that separates a paper number from something a clinician can actually use live.",
     image: realtime,
+    status: "draft",
   },
 ];
 
+export const publishedPosts = posts.filter((post) => post.status === "published");
+export const hasPublishedPosts = publishedPosts.length > 0;
+
 export function getPostBySlug(slug: string): Post | undefined {
-  return posts.find((post) => post.slug === slug);
+  return publishedPosts.find((post) => post.slug === slug);
 }

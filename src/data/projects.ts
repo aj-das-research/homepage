@@ -18,6 +18,8 @@ export type Project = {
    * Leave empty until you are ready to write it.
    */
   abstract?: string[];
+  /** Curated for the homepage rather than inferred from array order. */
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
@@ -29,6 +31,7 @@ export const projects: Project[] = [
       "Building foundation models that encode scientific structure — multimodal, trustworthy, and usable across discovery workflows.",
     image: faithfulReasoning,
     abstract: [],
+    featured: true,
   },
   {
     slug: "autonomous-scientific-discovery",
@@ -38,6 +41,7 @@ export const projects: Project[] = [
       "Agentic systems that propose, test, and refine scientific hypotheses with experts in the loop.",
     image: phenotype,
     abstract: [],
+    featured: true,
   },
   {
     slug: "ai-for-ai",
@@ -47,6 +51,7 @@ export const projects: Project[] = [
       "Using AI to understand, audit, and stabilize AI — interpretability, agent behavior, and safety under self-modification.",
     image: interpretability,
     abstract: [],
+    featured: true,
   },
   {
     slug: "ai-for-risk-mitigation-in-radiology-scans",
@@ -65,4 +70,8 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function projectsByStatus(status: ProjectStatus): Project[] {
   return projects.filter((project) => project.status === status);
+}
+
+export function hasProjectDetail(project: Project): boolean {
+  return Boolean(project.abstract?.some((paragraph) => paragraph.trim().length > 0));
 }
