@@ -1,19 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Abhijit Das">
-  <!-- Dark field matching site background -->
-  <rect width="32" height="32" rx="7" fill="#16181d"/>
-  <!-- Outer hexagon -->
+  <!-- Maroon field — site accent -->
+  <rect width="32" height="32" rx="7" fill="#a0182d"/>
+  <!-- Soft inner wash, like paper under ink -->
+  <rect x="2.5" y="2.5" width="27" height="27" rx="5.5" fill="#f5f4f1" opacity="0.08"/>
+  <!-- Geometric serif A: triangle + crossbar (reads at 16px) -->
   <path
-    d="M16 4.5 L26.5 10.5 L26.5 21.5 L16 27.5 L5.5 21.5 L5.5 10.5 Z"
-    fill="none"
-    stroke="#ffc46b"
-    stroke-width="1.75"
-    stroke-linejoin="round"
+    d="M16 6.2 L24.6 25.2 H21.15 L19.35 20.4 H12.65 L10.85 25.2 H7.4 L16 6.2 Z"
+    fill="#f5f4f1"
   />
-  <!-- Inner diamond -->
+  <!-- Crossbar cutout to keep the A open and sharp -->
+  <path d="M13.55 17.55 H18.45 L16 11.35 Z" fill="#a0182d"/>
+  <!-- Ink-mark underline (page-title motif) -->
   <path
-    d="M16 10 L22 16 L16 22 L10 16 Z"
-    fill="#ffc46b"
+    d="M9.5 27.2 H22.5"
+    stroke="#f5f4f1"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    opacity="0.9"
   />
-  <!-- Soft primary accent tip -->
-  <circle cx="16" cy="16" r="1.6" fill="#16181d"/>
 </svg>
