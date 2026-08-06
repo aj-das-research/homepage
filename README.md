@@ -2,7 +2,9 @@
 
 Personal academic / research homepage for [Abhijit Das](https://github.com/aj-das-research).
 
-**Live site:** [https://aj-das-research.github.io/homepage/](https://aj-das-research.github.io/homepage/)
+**Live site:** [https://www.abhijitdas.net](https://www.abhijitdas.net)
+
+> This repository is an **archive** of the site source. GitHub Pages has been retired; the production site is hosted at the custom domain above.
 
 ## Stack
 
@@ -29,17 +31,6 @@ npm run build
 npm run preview
 ```
 
-## GitHub Pages
-
-This project is set up for static hosting via GitHub Pages (TanStack Start SPA mode).
-
-1. Push this repo to GitHub.
-2. In the repo **Settings → Pages**, set the source to **GitHub Actions**.
-3. The deploy workflow sets `VITE_BASE_PATH` from the repository name, builds, and publishes `.output/public` (copying `_shell.html` to `index.html` / `404.html`).
-4. For a user site (`https://<user>.github.io/`), the base path stays `/`.
-
-Published site: [https://aj-das-research.github.io/homepage/](https://aj-das-research.github.io/homepage/)
-
 ## Content
 
 Site content lives under `src/data/` (profile, publications, projects, etc.). Update those files to change the published information.
@@ -55,7 +46,7 @@ Edit `abstract` on each project object to add the long-form write-up.
 
 ### Publications images
 
-Listing teaser figures live as `src/assets/media/pub-*.jpg` (paper architecture/result figures with white padding, 16:9). Sourced from arXiv, Springer chapter PDFs, Frontiers, and GIE.
+Listing teaser figures live as `src/assets/media/pub-*-teaser.png` (16:9 conceptual teasers). Older paper figures may still exist as `pub-*.jpg`.
 
 ### Blog
 

@@ -1,7 +1,7 @@
-import faithfulReasoning from "@/assets/media/faithful-reasoning.jpg";
-import uncertainty from "@/assets/media/uncertainty.jpg";
-import interpretability from "@/assets/media/interpretability.jpg";
-import phenotype from "@/assets/media/phenotype.jpg";
+import scientificFm from "@/assets/media/project-scientific-fm-teaser.png";
+import autonomousDiscovery from "@/assets/media/project-autonomous-discovery-teaser.png";
+import aiForAi from "@/assets/media/project-ai-for-ai-teaser.png";
+import radiologyRisk from "@/assets/media/project-radiology-risk-teaser.png";
 
 export type ProjectStatus = "active" | "closed";
 
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     status: "active",
     summary:
       "Building foundation models that encode scientific structure — multimodal, trustworthy, and usable across discovery workflows.",
-    image: faithfulReasoning,
+    image: scientificFm,
     abstract: [],
     featured: true,
   },
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     status: "active",
     summary:
       "Agentic systems that propose, test, and refine scientific hypotheses with experts in the loop.",
-    image: phenotype,
+    image: autonomousDiscovery,
     abstract: [],
     featured: true,
   },
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     status: "active",
     summary:
       "Using AI to understand, audit, and stabilize AI — interpretability, agent behavior, and safety under self-modification.",
-    image: interpretability,
+    image: aiForAi,
     abstract: [],
     featured: true,
   },
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     status: "closed",
     summary:
       "Risk-aware clinical AI for radiology: uncertainty, abstention, and hallucination control at deployment time.",
-    image: uncertainty,
+    image: radiologyRisk,
     abstract: [],
   },
 ];

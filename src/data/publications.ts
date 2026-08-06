@@ -1,13 +1,13 @@
-import pubEntrust from "@/assets/media/pub-entrust.jpg";
-import pubProton from "@/assets/media/pub-proton.jpg";
-import pubGraphDiff from "@/assets/media/pub-graph-diff.jpg";
-import pubVillani from "@/assets/media/pub-villani.jpg";
-import pubEthical from "@/assets/media/pub-ethical.jpg";
-import pubLesion from "@/assets/media/pub-lesion.jpg";
-import pubProfonet from "@/assets/media/pub-profonet.jpg";
-import pubSeanet from "@/assets/media/pub-seanet.jpg";
-import pubPamUnet from "@/assets/media/pub-pam-unet.jpg";
-import pubDapodet from "@/assets/media/pub-dapodet.jpg";
+import pubEntrust from "@/assets/media/pub-entrust-teaser.png";
+import pubProton from "@/assets/media/pub-proton-teaser.png";
+import pubGraphDiff from "@/assets/media/pub-graph-diff-teaser.png";
+import pubVillani from "@/assets/media/pub-villani-teaser.png";
+import pubEthical from "@/assets/media/pub-ethical-teaser.png";
+import pubLesion from "@/assets/media/pub-lesion-teaser.png";
+import pubProfonet from "@/assets/media/pub-profonet-teaser.png";
+import pubSeanet from "@/assets/media/pub-seanet-teaser.png";
+import pubPamUnet from "@/assets/media/pub-pam-unet-teaser.png";
+import pubDapodet from "@/assets/media/pub-dapodet-teaser.png";
 
 export type Publication = {
   title: string;

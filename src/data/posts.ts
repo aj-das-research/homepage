@@ -1,7 +1,7 @@
-import uncertainty from "@/assets/media/uncertainty.jpg";
-import decoding from "@/assets/media/decoding.jpg";
-import realtime from "@/assets/media/realtime.jpg";
-import interpretability from "@/assets/media/interpretability.jpg";
+import whatModelsSee from "@/assets/media/blog-what-models-see-teaser.png";
+import conformal from "@/assets/media/blog-conformal-teaser.png";
+import hallucinationDecode from "@/assets/media/blog-hallucination-decode-teaser.png";
+import fps76 from "@/assets/media/blog-76fps-teaser.png";
 
 export type Post = {
   slug: string;
@@ -33,7 +33,7 @@ export const posts: Post[] = [
     date: "2026-07-28",
     excerpt:
       "Placeholder note on probing vision–language representations — what lights up inside the model, and how far that is from a clinical explanation you can trust.",
-    image: interpretability,
+    image: whatModelsSee,
     status: "draft",
   },
   {
@@ -42,7 +42,7 @@ export const posts: Post[] = [
     date: "2026-06-14",
     excerpt:
       "Why coverage guarantees change what a model is allowed to say, and what breaks when the exchangeability assumption quietly fails on hospital data.",
-    image: uncertainty,
+    image: conformal,
     status: "draft",
   },
 
@@ -52,7 +52,7 @@ export const posts: Post[] = [
     date: "2026-04-02",
     excerpt:
       "Notes from PCCD and CAST on how much fabricated content you can remove at decoding time before you have to touch the weights.",
-    image: decoding,
+    image: hallucinationDecode,
     status: "draft",
   },
   {
@@ -61,7 +61,7 @@ export const posts: Post[] = [
     date: "2026-01-20",
     excerpt:
       "Quantization, operator fusion, and the unglamorous profiling work that separates a paper number from something a clinician can actually use live.",
-    image: realtime,
+    image: fps76,
     status: "draft",
   },
 ];
