@@ -6,13 +6,13 @@ import { updates } from "@/data/updates";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Abhijit Das — Machine Learning Researcher, MBZUAI" },
+      { title: "Abhijit Das — PhD in ML, MBZUAI" },
       {
         name: "description",
         content:
           "Abhijit Das is a PhD student at MBZUAI working on scientific foundation models, autonomous discovery for personalized medicine, AI for AI, and scalable inference.",
       },
-      { property: "og:title", content: "Abhijit Das — Machine Learning Researcher, MBZUAI" },
+      { property: "og:title", content: "Abhijit Das — PhD in ML, MBZUAI" },
       {
         property: "og:description",
         content:
